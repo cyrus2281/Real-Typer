@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typer.js</title>
+    <script type="module" src="Typer.js"></script>
+  </head>
+  <body>
+    <h1 class="typeHere">
+      <span>Hello there</span>
+      <span>this is cool</span>
+      <span>I love coding</span>
+    </h1>
+
+    <script type="module">
+      import { Typer } from "./Typer.js";
+
+      let strings = [...document.querySelector(".typeHere").children].reduce(
+        (acc, cur) => {
+          acc.push(cur.textContent);
+          return acc;
+        },
+        []
+      );
+
+      Typer.values.strings = strings;
+      Typer.values.cssSelector = ".typeHere";
+      Typer.values.deleteLastString = false;
+      Typer.type();
+    </script>
+  </body>
+</html>
