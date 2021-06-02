@@ -37,6 +37,14 @@ https://typer-js.netlify.app/
 
 ## Quick Start:
 
+create a html container. (The children text content will be used as strings if no string is provided)
+
+    <div class="typer">
+        <p>First Sample Text</p>
+        <p>Second Sample Text</p>
+        <p>Third Sample Text</p>
+    </div>
+      
 include the Type.js as a module:
 
     <script type="module" src="Typer.js"></script>
@@ -51,7 +59,7 @@ call the type method to start typing
 
     <script type="module">
         import Typer from "./Typer.js";
-        let typer = new Typer(".typer1");
+        let typer = new Typer(".typer");
         typer.type();
     </script>
 
@@ -62,7 +70,7 @@ the following properties can be changed
 
     <script type="module">
         import Typer from "./Typer.js";
-        let typer = new Typer(".typer1");
+        let typer = new Typer(".typer");
         typer.strings = ['sample one','sample two','sample three'];
         typer.cursorCharacter = "|";
         typer.typeSpeed = 100;
