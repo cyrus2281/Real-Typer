@@ -33,6 +33,9 @@
       .intro {
         font-size: 1.2rem;
       }
+      .setup code{
+          max-width: 400px;
+      }
       .setup {
         padding: 1rem;
         background: rgb(215, 255, 106);
@@ -62,13 +65,14 @@
           grid-template-columns: repeat(3, 1fr);
         }
       }
+      .col{
+        padding: 1.5rem;
+      }
       .col:nth-child(2n + 1) {
         background: #f0f0f0;
-        padding: 1.5rem;
       }
       .col:nth-child(2n) {
         background: #fbfbfb;
-        padding: 1.5rem;
       }
       .typer {
         padding: 1.5rem;
@@ -112,15 +116,15 @@
       <article>
         <h2>First include Type.js</h2>
         <pre><code class="language-js">
-      &#60;script type="module" src="Typer.js">&#60;/script>
+&#60;script type="module" src="Typer.js">&#60;/script>
               </code></pre>
       </article>
       <article>
         <h2>Then import the module</h2>
         <pre><code class="language-js">
-      &#60;script type="module">
-          import Typer from "./Typer.js";
-      &#60;/script>
+&#60;script type="module">
+    import Typer from "./Typer.js";
+&#60;/script>
               </code></pre>
       </article>
     </section>
