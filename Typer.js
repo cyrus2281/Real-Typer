@@ -9,6 +9,7 @@ export default function Typer(cssSelector, strings = []) {
     this.deleteSpeed = 50;
     this.holdDelay = 1500;
     this.pauseDelay = 1000;
+    this.delete = true;
     this.deleteLastString = true;
     this.loop = true;
     this.loopHold = 1500;
@@ -17,7 +18,7 @@ export default function Typer(cssSelector, strings = []) {
 }
 Typer.prototype.type = function () {
     let self = this;
-    if(!_checkValues(this)){
+    if (!_checkValues(this)) {
         return 0;
     };
     let container = document.querySelector(self.cssSelector);
@@ -40,7 +41,7 @@ Typer.prototype.type = function () {
             setTimeout(() => {
                 container.textContent = currentWord + self.cursorCharacter;
                 //if the last word is complete and the loop is true, repeat
-                if ((!self.deleteLastString) && currentWord == string && currentCount + 1 == self.strings.length && self.loop) {
+                if ((!self.delete) && currentWord == string && currentCount + 1 == self.strings.length && self.loop) {
                     wordCount = self.loopStartIndex;
                     currentTypeSpeed = self.loopHold;
                     typing(self.strings[wordCount]);
@@ -49,21 +50,24 @@ Typer.prototype.type = function () {
         }
         //waiting before delete
         currentTypeSpeed += self.holdDelay;
-        //checking whether to delete the word or not
-        if ((wordCount + 1 < self.strings.length) || self.deleteLastString) {
-            //deleting the word
-            for (let index = word.length; index >= 0; index--) {
-                currentTypeSpeed += self.deleteSpeed
-                let currentCount = wordCount
-                setTimeout(() => {
-                    container.textContent = word.slice(0, index) + self.cursorCharacter;
-                    //if it is the last character of the last word and the loop is true, repeat
-                    if (index == 0 && currentCount + 1 == self.strings.length && self.loop) {
-                        wordCount = self.loopStartIndex;
-                        currentTypeSpeed = self.loopHold;
-                        typing(self.strings[wordCount]);
-                    }
-                }, currentTypeSpeed)
+        //checking whether to delete words or not
+        if (self.delete) {
+            //checking whether to delete the word or not
+            if ((wordCount + 1 < self.strings.length) || self.deleteLastString) {
+                //deleting the word
+                for (let index = word.length; index >= 0; index--) {
+                    currentTypeSpeed += self.deleteSpeed
+                    let currentCount = wordCount
+                    setTimeout(() => {
+                        container.textContent = word.slice(0, index) + self.cursorCharacter;
+                        //if it is the last character of the last word and the loop is true, repeat
+                        if (index == 0 && currentCount + 1 == self.strings.length && self.loop) {
+                            wordCount = self.loopStartIndex;
+                            currentTypeSpeed = self.loopHold;
+                            typing(self.strings[wordCount]);
+                        }
+                    }, currentTypeSpeed)
+                }
             }
         }
         currentTypeSpeed += self.pauseDelay;
@@ -75,7 +79,7 @@ Typer.prototype.type = function () {
 
 
 function _checkValues(self) {
-    if(!document.querySelector(self.cssSelector)){
+    if (!document.querySelector(self.cssSelector)) {
         console.error("Could not find the " + self.cssSelector)
         return false
     }
@@ -88,15 +92,15 @@ function _checkValues(self) {
             },
             []
         );
-        if (text.length < 1){
+        if (text.length < 1) {
             self.strings = ["Hi there, Hello", "This is Example", 'Put your own values', "Good Luck"];
-        }else{
+        } else {
             self.strings = text
         }
     }
 
-    if (!(self.loopStartIndex < self.strings.length)){
-        console.error("loop start value can not be bigger than length of the strings(" + self.strings.length+")")
+    if (!(self.loopStartIndex < self.strings.length)) {
+        console.error("loop start value can not be bigger than length of the strings(" + self.strings.length + ")")
         return false;
     }
     return true;

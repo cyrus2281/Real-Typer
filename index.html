@@ -13,24 +13,37 @@
       header {
         padding: 1rem;
         text-align: center;
-        background: rgb(171, 233, 0);
+        background: rgb(218, 233, 0);
       }
       h1 {
         font-family: cursive;
         padding-bottom: 1rem;
         font-size: 2rem;
       }
-      header p {
+      .intro {
         font-size: 1.2rem;
+      }
+      .setup {
+        padding: 1rem;
+        background: rgb(215, 255, 106);
+      }
+      .setup h2 {
+        padding: 1rem;
+      }
+      .setup {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+      }
+      .setup code {
+        height: 80px;
       }
       .grid {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
-        row-gap: 1rem;
-        column-gap: 1rem;
       }
       @media screen and (min-width: 756px) {
-        .grid {
+        .grid,
+        .setup {
           grid-template-columns: repeat(2, 1fr);
         }
       }
@@ -41,7 +54,11 @@
       }
       .col:nth-child(2n + 1) {
         background: #f0f0f0;
-        padding: 1rem;
+        padding: 1.5rem;
+      }
+      .col:nth-child(2n) {
+        background: #fbfbfb;
+        padding: 1.5rem;
       }
       .typer {
         padding: 1.5rem;
@@ -55,7 +72,7 @@
         border-radius: 1rem;
         border: 1px solid #999;
         display: block;
-        padding:0.2rem 1rem;
+        padding: 0.2rem 1rem;
       }
     </style>
     <title>Typer.js</title>
@@ -64,11 +81,28 @@
   <body>
     <header>
       <h1>Typer.js</h1>
-      <p>
-        JavaScript module gives the effect of typing for texts displayed on
-        website
-      </p>
+      <div class="intro">
+        <p>
+          A JavaScript module that gives the effect of typing for texts.
+        </p>
+      </div>
     </header>
+    <section class="setup">
+      <article>
+        <h2>First include Type.js</h2>
+        <pre><code class="language-js">
+      &#60;script type="module" src="Typer.js">&#60;/script>
+              </code></pre>
+      </article>
+      <article>
+        <h2>Then import the module</h2>
+        <pre><code class="language-js">
+      &#60;script type="module">
+          import Typer from "./Typer.js";
+      &#60;/script>
+              </code></pre>
+      </article>
+    </section>
     <div class="grid">
       <div class="col">
         <h2 class="col-title">Simple Type</h2>
@@ -78,14 +112,119 @@
           <span>Doloremque, architecto Officia quos.</span>
         </div>
         <pre><code class="language-js">
-let typer1 = new Typer(".typer1");
-typer1.type();
+    let typer1 = new Typer(".typer1");
+    typer1.type();
         </code></pre>
       </div>
-      <div class="typer typer2"></div>
+      <div class="col">
+        <h2 class="col-title">Fast Type</h2>
+        <div class="typer typer2">
+          <span>Lorem ipsum dolor sit amet.</span>
+          <span>consectetur adipisicing elit.</span>
+          <span>Doloremque, architecto Officia quos.</span>
+        </div>
+        <pre><code class="language-js">
+    let typer2 = new Typer(".typer2");
+    typer2.typeSpeed = 30;
+    typer2.deleteSpeed = 20;
+    typer2.type();
+        </code></pre>
+      </div>
+      <div class="col">
+        <h2 class="col-title">Long Hold</h2>
+        <div class="typer typer3">
+          <span>Lorem ipsum dolor sit amet.</span>
+          <span>consectetur adipisicing elit.</span>
+          <span>Doloremque, architecto Officia quos.</span>
+        </div>
+        <pre><code class="language-js">
+    let typer3 = new Typer(".typer3");
+    typer3.holdDelay = 2500;
+    typer3.pauseDelay = 2000;
+    typer3.loopHold = 2500;
+    typer3.type();
+        </code></pre>
+      </div>
+      <div class="col">
+        <h2 class="col-title">Given String</h2>
+        <div class="typer typer4"></div>
+        <pre><code class="language-js">
+    let strings = ["possus exeturi velit",
+                   "rem nostrum voluates",
+                   "omnis impedit aperes"];
+            
+    let typer4 = new Typer(".typer4",strings);
+    typer4.type();
+        </code></pre>
+      </div>
+      <div class="col">
+        <h2 class="col-title">Custom Cursor</h2>
+        <div class="typer typer5">
+          <span>Lorem ipsum dolor sit amet.</span>
+          <span>consectetur adipisicing elit.</span>
+          <span>Doloremque, architecto Officia quos.</span>
+        </div>
+        <pre><code class="language-js">
+    let typer5 = new Typer(".typer5");
+    typer5.cursorCharacter = "_";
+    typer5.type();
+      </code></pre>
+      </div>
+      <div class="col">
+        <h2 class="col-title">No Delete</h2>
+        <div class="typer typer6">
+          <span>Lorem ipsum dolor sit amet.</span>
+          <span>consectetur adipisicing elit.</span>
+          <span>Doloremque, architecto Officia quos.</span>
+        </div>
+        <pre><code class="language-js">
+    let typer6 = new Typer(".typer6");
+    typer6.delete = false;
+    typer6.type();
+      </code></pre>
+      </div>
+      <div class="col">
+        <h2 class="col-title">No Loop</h2>
+        <div class="typer typer7">
+          <span>1 Lorem ipsum sit amet.</span>
+          <span>2 consectetur elit.</span>
+          <span>3 Doloremque, Officia quos.</span>
+        </div>
+        <pre><code class="language-js">
+    let typer7 = new Typer(".typer7");
+    typer7.loop = false;
+    typer7.type();
+    </code></pre>
+      </div>
+      <div class="col">
+        <h2 class="col-title">Loop Start Index</h2>
+        <div class="typer typer8">
+          <span>1 Lorem ipsum sit amet.</span>
+          <span>2 consectetur elit.</span>
+          <span>3 Doloremque, Officia quos.</span>
+        </div>
+        <pre><code class="language-js">
+    let typer8 = new Typer(".typer8");
+    typer8.loopStartIndex = 1;
+    typer8.type();
+      </code></pre>
+      </div>
+      <div class="col">
+        <h2 class="col-title">No Delete last string & no loop</h2>
+        <div class="typer typer9">
+          <span>Lorem ipsum sit amet.</span>
+          <span>consectetur elit.</span>
+          <span>Doloremque, Officia quos.</span>
+        </div>
+        <pre><code class="language-js">
+    let typer9 = new Typer(".typer9");
+    typer9.deleteLastString = false;
+    typer9.loop = false;
+    typer9.type();
+      </code></pre>
+      </div>
     </div>
-    <!-- possimus reprehenderit velit rem excepturi qui voluptates omnis impedit
-    asperiores nostrum sed repellat quae vitae totam molestias delectus ad
+    <!-- possimus reprehenderit velit rem excepturi qui voluptates omnis impedit asperiores  sed repellat quae vitae totam molestias delectus ad
     laborum aperiam! Iusto tempore, unde tempora praesentium velit reprehenderit
     id fuga vitae! Possimus doloremque debitis sint, tempore laborum, nulla
     aliquid a, nam reprehenderit rem nobis deleniti. Maiores quo omnis
@@ -108,14 +247,54 @@ typer1.type();
     <script type="module">
       import Typer from "./Typer.js";
 
+      let typer = new Typer(".intro");
+      typer.typeSpeed = 50;
+      typer.deleteLastString = false;
+      typer.loop = false;
+      typer.type();
+
       let typer1 = new Typer(".typer1");
       typer1.type();
 
-      let typer2 = new Typer(".typer2", ["hello theree", "gegergerg"]);
+      let typer2 = new Typer(".typer2");
+      typer2.typeSpeed = 30;
+      typer2.deleteSpeed = 20;
       typer2.type();
 
-      //   let typer3 = new Typer(".typeHere3");
-      //   typer3.type();
+      let typer3 = new Typer(".typer3");
+      typer3.holdDelay = 2500;
+      typer3.pauseDelay = 2000;
+      typer3.loopHold = 2500;
+      typer3.type();
+
+      let strings = [
+        "possus exeturi velit",
+        "rem nostrum voluates",
+        "omnis impedit aperes",
+      ];
+      let typer4 = new Typer(".typer4", strings);
+      typer4.type();
+
+      let typer5 = new Typer(".typer5");
+      typer5.cursorCharacter = "_";
+      typer5.type();
+
+      let typer6 = new Typer(".typer6");
+      typer6.delete = false;
+      typer6.type();
+
+      let typer7 = new Typer(".typer7");
+      typer7.loop = false;
+      typer7.type();
+
+      let typer8 = new Typer(".typer8");
+      typer8.loopStartIndex = 1;
+      typer8.type();
+
+      let typer9 = new Typer(".typer9");
+      typer9.deleteLastString = false;
+      typer9.loop = false;
+      typer9.type();
     </script>
   </body>
 </html>
