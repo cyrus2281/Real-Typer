@@ -4,31 +4,118 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+      header {
+        padding: 1rem;
+        text-align: center;
+        background: rgb(171, 233, 0);
+      }
+      h1 {
+        font-family: cursive;
+        padding-bottom: 1rem;
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 1.2rem;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        row-gap: 1rem;
+        column-gap: 1rem;
+      }
+      @media screen and (min-width: 756px) {
+        .grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media screen and (min-width: 992px) {
+        .grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      .col:nth-child(2n + 1) {
+        background: #f0f0f0;
+        padding: 1rem;
+      }
+      .typer {
+        padding: 1.5rem;
+        font-size: 1.2rem;
+      }
+      pre code {
+        margin: 0 auto;
+        width: 90%;
+        background-color: #202020df;
+        color: #eee;
+        border-radius: 1rem;
+        border: 1px solid #999;
+        display: block;
+        padding:0.2rem 1rem;
+      }
+    </style>
     <title>Typer.js</title>
     <script type="module" src="Typer.js"></script>
   </head>
   <body>
-    <h1 class="typeHere">
-      <span>Hello there</span>
-      <span>this is cool</span>
-      <span>I love coding</span>
-    </h1>
+    <header>
+      <h1>Typer.js</h1>
+      <p>
+        JavaScript module gives the effect of typing for texts displayed on
+        website
+      </p>
+    </header>
+    <div class="grid">
+      <div class="col">
+        <h2 class="col-title">Simple Type</h2>
+        <div class="typer typer1">
+          <span>Lorem ipsum dolor sit amet.</span>
+          <span>consectetur adipisicing elit.</span>
+          <span>Doloremque, architecto Officia quos.</span>
+        </div>
+        <pre><code class="language-js">
+let typer1 = new Typer(".typer1");
+typer1.type();
+        </code></pre>
+      </div>
+      <div class="typer typer2"></div>
+    </div>
+    <!-- possimus reprehenderit velit rem excepturi qui voluptates omnis impedit
+    asperiores nostrum sed repellat quae vitae totam molestias delectus ad
+    laborum aperiam! Iusto tempore, unde tempora praesentium velit reprehenderit
+    id fuga vitae! Possimus doloremque debitis sint, tempore laborum, nulla
+    aliquid a, nam reprehenderit rem nobis deleniti. Maiores quo omnis
+    necessitatibus quam animi odit voluptate. Mollitia quidem repellendus,
+    molestias a eveniet illum doloribus ducimus amet! Debitis, sunt quidem.
+    Alias voluptatibus expedita porro adipisci quasi quidem similique sunt
+    exercitationem, id dicta sequi ducimus a libero iusto rem deserunt
+    praesentium dolorem aperiam sint dignissimos aliquid nihil omnis quisquam
+    reprehenderit! Unde dolorum dolor est inventore eaque saepe quisquam ab ipsa
+    sunt vel ducimus architecto aspernatur quos, dolorem odio fugit quia cum
+    reiciendis accusantium repudiandae neque? Voluptas soluta porro cupiditate
+    autem. Quia iure rerum provident culpa, et dolorum cum, dignissimos sint vel
+    accusamus temporibus? Dolore accusamus quos ullam, libero aliquam id
+    inventore expedita voluptatibus veniam omnis quis veritatis dignissimos sed
+    dolor maxime, repudiandae, fuga consequatur officiis deserunt aperiam.
+    Cumque suscipit possimus laudantium ea excepturi culpa harum magnam odio
+    libero ratione eveniet dolorem, nihil consequatur maiores nulla sit
+    cupiditate dolorum? Nulla praesentium delectus totam. Exercitationem. -->
 
     <script type="module">
-      import { Typer } from "./Typer.js";
+      import Typer from "./Typer.js";
 
-      let strings = [...document.querySelector(".typeHere").children].reduce(
-        (acc, cur) => {
-          acc.push(cur.textContent);
-          return acc;
-        },
-        []
-      );
+      let typer1 = new Typer(".typer1");
+      typer1.type();
 
-      Typer.values.strings = strings;
-      Typer.values.cssSelector = ".typeHere";
-      Typer.values.deleteLastString = false;
-      Typer.type();
+      let typer2 = new Typer(".typer2", ["hello theree", "gegergerg"]);
+      typer2.type();
+
+      //   let typer3 = new Typer(".typeHere3");
+      //   typer3.type();
     </script>
   </body>
 </html>

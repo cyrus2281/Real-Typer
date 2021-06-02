@@ -1,65 +1,103 @@
-export const Typer = (function () {
-    const values = {
-        strings: ["Hi there, Hello", "This is Example", 'Put your own values', "Good Luck"],
-        cssSelector: ".typeHere",
-        typeSpeed: 100,
-        deleteSpeed: 50,
-        holdDelay: 1500,
-        pauseDelay: 1000,
-        deleteLastString: true,
-        loop: true,
-        loopHold: 1500,
-        loopStartIndex: 0
-    }
+/**
+ * var cssSelector: the css selector for the container of the strings
+ */
+export default function Typer(cssSelector, strings = []) {
+    this.strings = strings;
+    this.cssSelector = cssSelector;
+    this.cursorCharacter = "|";
+    this.typeSpeed = 100;
+    this.deleteSpeed = 50;
+    this.holdDelay = 1500;
+    this.pauseDelay = 1000;
+    this.deleteLastString = true;
+    this.loop = true;
+    this.loopHold = 1500;
+    this.loopStartIndex = 0
 
-    function type() {
-        let container = document.querySelector(values.cssSelector);
-        //total time from start
-        let currentTypeSpeed = values.typeSpeed
-        //word count
-        let wordCount = 0
-        function typing(string) {
-            //word to write
-            let word = ""
-            //going through each character
-            for (const char of string) {
-                //adding the character
-                word += char
-                //applying closure to keep value after web API's response
-                let currentWord = word
-                currentTypeSpeed += values.typeSpeed
+}
+Typer.prototype.type = function () {
+    let self = this;
+    if(!_checkValues(this)){
+        return 0;
+    };
+    let container = document.querySelector(self.cssSelector);
+    //total time from start
+    let currentTypeSpeed = self.typeSpeed
+    //word count
+    let wordCount = 0
+    function typing(string) {
+        //current word count
+        let currentCount = wordCount
+        //word to write
+        let word = ""
+        //going through each character
+        for (const char of string) {
+            //adding the character
+            word += char;
+            //applying closure to keep value after web API's response
+            let currentWord = word;
+            currentTypeSpeed += self.typeSpeed;
+            setTimeout(() => {
+                container.textContent = currentWord + self.cursorCharacter;
+                //if the last word is complete and the loop is true, repeat
+                if ((!self.deleteLastString) && currentWord == string && currentCount + 1 == self.strings.length && self.loop) {
+                    wordCount = self.loopStartIndex;
+                    currentTypeSpeed = self.loopHold;
+                    typing(self.strings[wordCount]);
+                }
+            }, currentTypeSpeed)
+        }
+        //waiting before delete
+        currentTypeSpeed += self.holdDelay;
+        //checking whether to delete the word or not
+        if ((wordCount + 1 < self.strings.length) || self.deleteLastString) {
+            //deleting the word
+            for (let index = word.length; index >= 0; index--) {
+                currentTypeSpeed += self.deleteSpeed
+                let currentCount = wordCount
                 setTimeout(() => {
-                    container.textContent = currentWord + "|";
+                    container.textContent = word.slice(0, index) + self.cursorCharacter;
+                    //if it is the last character of the last word and the loop is true, repeat
+                    if (index == 0 && currentCount + 1 == self.strings.length && self.loop) {
+                        wordCount = self.loopStartIndex;
+                        currentTypeSpeed = self.loopHold;
+                        typing(self.strings[wordCount]);
+                    }
                 }, currentTypeSpeed)
             }
-            //waiting before delete
-            currentTypeSpeed += values.holdDelay;
-            //checking whether to delete the word or not
-            if ((wordCount + 1 < values.strings.length) || values.deleteLastString) {
-                //deleting the word
-                for (let index = word.length; index >= 0; index--) {
-                    currentTypeSpeed += values.deleteSpeed
-                    let currentCount = wordCount
-                    setTimeout(() => {
-                        container.textContent = word.slice(0, index) + "|";
-                        if (index == 0 && currentCount + 1 == values.strings.length && values.loop) {
-                            wordCount = values.loopStartIndex;
-                            currentTypeSpeed = values.loopHold;
-                            typing(values.strings[wordCount]);
-                        }
-                    }, currentTypeSpeed)
-                }
-            }
-            currentTypeSpeed += values.pauseDelay;
-            //going through each string
-            if (++wordCount < values.strings.length) typing(values.strings[wordCount])
         }
-        typing(values.strings[0])
+        currentTypeSpeed += self.pauseDelay;
+        //going through each string
+        if (++wordCount < self.strings.length) typing(self.strings[wordCount])
+    }
+    typing(self.strings[0])
+}
 
+
+function _checkValues(self) {
+    if(!document.querySelector(self.cssSelector)){
+        console.error("Could not find the " + self.cssSelector)
+        return false
+    }
+    if (self.strings.length < 1) {
+        console.log();
+        let text = [...document.querySelector(self.cssSelector).children].reduce(
+            (acc, cur) => {
+                acc.push(cur.textContent);
+                return acc;
+            },
+            []
+        );
+        if (text.length < 1){
+            self.strings = ["Hi there, Hello", "This is Example", 'Put your own values', "Good Luck"];
+        }else{
+            self.strings = text
+        }
     }
 
-    return {
-        values,
-        type
+    if (!(self.loopStartIndex < self.strings.length)){
+        console.error("loop start value can not be bigger than length of the strings(" + self.strings.length+")")
+        return false;
     }
-})()
+    return true;
+}
