@@ -1,5 +1,20 @@
 /**
- * var cssSelector: the css selector for the container of the strings
+ *   Typer.js
+ * 
+ *   A JavaScript module that gives the effect of typing for texts
+ *  
+ *   author: Milad Mobini
+ *
+ *   Licensed under the MIT license.
+ *   http://www.opensource.org/licenses/mit-license.php
+ *
+ *   Copyright 2021, EcoCyrus, Milad Mobini
+ *   https://www.ecocyrus.com
+ * 
+ * 
+ * 
+ * @param {*} cssSelector the html component that the strings are written to(given from). Must be a css selector
+ * @param {*} strings     Strings to be type, if not given the children of target would be selected
  */
 export default function Typer(cssSelector, strings = []) {
     this.strings = strings;

@@ -35,38 +35,38 @@ Typer.js  is a light weight JavaScript module that allows you to simulate the ac
 
 include the Type.js as a module:
 
-<script type="module" src="Typer.js"></script>
+    <script type="module" src="Typer.js"></script>
 
 import the module at your script (make sure to put the type as 'module'):
 create an object of Typer with argument of the target css selector
 apply any customization that you want
 call the type method to start typing
 
-<script type="module">
-    import Typer from "./Typer.js";
-    let typer = new Typer(".typer1");
-    typer.type();
-</script>
+    <script type="module">
+        import Typer from "./Typer.js";
+        let typer = new Typer(".typer1");
+        typer.type();
+    </script>
 
 
 ## Full Customization
 
 the following properties can be changed
 
-<script type="module">
-    import Typer from "./Typer.js";
-    let typer = new Typer(".typer1");
-    typer.strings = ['sample one','sample two','sample three'];
-    typer.cursorCharacter = "|";
-    typer.typeSpeed = 100;
-    typer.deleteSpeed = 50;
-    typer.holdDelay = 1500;
-    typer.pauseDelay = 1000;
-    typer.delete = true;
-    typer.deleteLastString = true;
-    typer.loop = true;
-    typer.loopHold = 1500;
-    typer.loopStartIndex = 0
-    typer1.type();
-</script>
+    <script type="module">
+        import Typer from "./Typer.js";
+        let typer = new Typer(".typer1");
+        typer.strings = ['sample one','sample two','sample three'];
+        typer.cursorCharacter = "|";
+        typer.typeSpeed = 100;
+        typer.deleteSpeed = 50;
+        typer.holdDelay = 1500;
+        typer.pauseDelay = 1000;
+        typer.delete = true;
+        typer.deleteLastString = true;
+        typer.loop = true;
+        typer.loopHold = 1500;
+        typer.loopStartIndex = 0
+        typer1.type();
+    </script>
 
