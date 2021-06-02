@@ -48,10 +48,10 @@ Typer.prototype.type = function () {
                 }
             }, currentTypeSpeed)
         }
-        //waiting before delete
-        currentTypeSpeed += self.holdDelay;
         //checking whether to delete words or not
         if (self.delete) {
+            //waiting before delete
+            currentTypeSpeed += self.holdDelay;
             //checking whether to delete the word or not
             if ((wordCount + 1 < self.strings.length) || self.deleteLastString) {
                 //deleting the word
