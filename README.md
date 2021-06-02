@@ -3,6 +3,9 @@ This JavaScript module gives the effect of typing for texts displayed on website
 
 Typer.js  is a light weight JavaScript module that allows you to simulate the action of real-time typing for texts on a website. Typer.js gives you lots of customizations to fully customize the simulation for your need.
 
+Sample and a quick guide to module can also be founded on the following link (index.html)
+https://typer-js.netlify.app/
+
 
 ## Variables:
     strings (default: Random text)   : Strings to be type, this value can be pass as an argument or be children of the selected component
@@ -38,8 +41,11 @@ include the Type.js as a module:
     <script type="module" src="Typer.js"></script>
 
 import the module at your script (make sure to put the type as 'module'):
+
 create an object of Typer with argument of the target css selector
+
 apply any customization that you want
+
 call the type method to start typing
 
     <script type="module">
@@ -70,3 +76,16 @@ the following properties can be changed
         typer1.type();
     </script>
 
+
+
+
+
+
+Typer.js
+author: Milad Mobini
+    
+Licensed under the MIT license.
+http://www.opensource.org/licenses/mit-license.php
+
+Copyright 2021, EcoCyrus, Milad Mobini
+https://www.ecocyrus.com
