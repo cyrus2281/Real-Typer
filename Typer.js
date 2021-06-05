@@ -24,11 +24,14 @@ export default function Typer(cssSelector, strings = []) {
     this.deleteSpeed = 50;
     this.holdDelay = 1500;
     this.pauseDelay = 1000;
+    this.startDelay = 0;
     this.delete = true;
     this.deleteLastString = true;
     this.loop = true;
     this.loopHold = 1500;
-    this.loopStartIndex = 0
+    this.loopStartIndex = 0;
+    this.callback = null;
+    this.callbackArgs = null;
 
 }
 Typer.prototype.type = function () {
@@ -38,7 +41,7 @@ Typer.prototype.type = function () {
     };
     let container = document.querySelector(self.cssSelector);
     //total time from start
-    let currentTypeSpeed = self.typeSpeed
+    let currentTypeSpeed = self.startDelay;
     //word count
     let wordCount = 0
     function typing(string) {
@@ -55,11 +58,18 @@ Typer.prototype.type = function () {
             currentTypeSpeed += self.typeSpeed;
             setTimeout(() => {
                 container.textContent = currentWord + self.cursorCharacter;
-                //if the last word is complete and the loop is true, repeat
-                if ((!self.delete) && currentWord == string && currentCount + 1 == self.strings.length && self.loop) {
-                    wordCount = self.loopStartIndex;
-                    currentTypeSpeed = self.loopHold;
-                    typing(self.strings[wordCount]);
+                //if the last word is complete 
+                if ((!self.delete) && currentWord == string && currentCount + 1 == self.strings.length) {
+                    //if callback has a function, run it and pass args
+                    if (self.callback !== null) {
+                        self.callback(self.callbackArgs);
+                    }
+                    //if the loop is true, repeat
+                    if (self.loop) {
+                        wordCount = self.loopStartIndex;
+                        currentTypeSpeed = self.loopHold;
+                        typing(self.strings[wordCount]);
+                    }
                 }
             }, currentTypeSpeed)
         }
@@ -75,11 +85,18 @@ Typer.prototype.type = function () {
                     let currentCount = wordCount
                     setTimeout(() => {
                         container.textContent = word.slice(0, index) + self.cursorCharacter;
-                        //if it is the last character of the last word and the loop is true, repeat
-                        if (index == 0 && currentCount + 1 == self.strings.length && self.loop) {
-                            wordCount = self.loopStartIndex;
-                            currentTypeSpeed = self.loopHold;
-                            typing(self.strings[wordCount]);
+                        //if it is the last character of the last word
+                        if (index == 0 && currentCount + 1 == self.strings.length) {
+                            //if callback has a function, run it and pass args
+                            if (self.callback !== null) {
+                                self.callback(self.callbackArgs);
+                            }
+                            //if loop is true, repeat
+                            if (self.loop) {
+                                wordCount = self.loopStartIndex;
+                                currentTypeSpeed = self.loopHold;
+                                typing(self.strings[wordCount]);
+                            }
                         }
                     }, currentTypeSpeed)
                 }
@@ -108,6 +125,7 @@ function _checkValues(self) {
             []
         );
         if (text.length < 1) {
+            console.warn("Could not find any strings. Adding default values.")
             self.strings = ["Hi there, Hello", "This is Example", 'Put your own values', "Good Luck"];
         } else {
             self.strings = text
@@ -117,6 +135,12 @@ function _checkValues(self) {
     if (!(self.loopStartIndex < self.strings.length)) {
         console.error("loop start value can not be bigger than length of the strings(" + self.strings.length + ")")
         return false;
+    }
+    if (self.callback !== null) {
+        if (!(self.callback instanceof Function)) {
+            console.error('Only a function can be assigned to callback');
+            return false;
+        }
     }
     return true;
 }
