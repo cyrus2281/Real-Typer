@@ -1,11 +1,12 @@
 # Typer.js
-This JavaScript module gives the effect of typing for texts displayed on website
+This JavaScript module gives the effect of typing for texts displayed on websites.
 
-Typer.js  is a light weight JavaScript module that allows you to simulate the action of real-time typing for texts on a website. Typer.js gives you lots of customizations to fully customize the simulation for your need.
+Typer.js  is a light weight JavaScript module that allows you to simulate the action of real-time typing for texts on a websites. Typer.js gives you lots of customizations to fully customize the simulation for your need.
 
-Sample and a quick guide to module can also be founded on the following link (index.html)
+Sample and a quick guide to module can also be founded on the following link (index.html).
 
 https://typer-js.netlify.app/
+
 
 
 ## Variables:
@@ -41,9 +42,10 @@ https://typer-js.netlify.app/
 
 
 
+
 ## Quick Start:
 
-create a html container. (The children text content will be used as strings if no string is provided)
+create a html container. (The children text content will be used as strings if no string is provided.)
 ```html
     <div class="typer">
         <p>First Sample Text</p>
@@ -51,17 +53,17 @@ create a html container. (The children text content will be used as strings if n
         <p>Third Sample Text</p>
     </div>
  ```  
-include the Type.js as a module:
+include the Typer.js as a module:
 ```html
     <script type="module" src="Typer.js"></script>
 ```
 import the module at your script (make sure to put the type as 'module'):
 
-create an object of Typer with argument of the target css selector
+create an object of Typer with argument of the target css selector.
 
-apply any customization that you want
+apply any customization that you want.
 
-call the type method to start typing
+call the type method to start typing.
 ```html
     <script type="module">
         import Typer from "./Typer.js";
@@ -70,9 +72,10 @@ call the type method to start typing
     </script>
 ```
 
+
 ## Full Customization
 
-the following properties can be changed
+the following properties can be changed.
 ```html
     <script type="module">
         import Typer from "./Typer.js";
