@@ -36,7 +36,7 @@ https://typer-js.netlify.app/
     loopStartIndex (default: 0)      : Index of the string that the loop will start from the second cycle and on
 
     callback (default: null)         : callback function that will run after each cycle
-    
+
     callbackArgs (default: null)     : argument that will be passed to the callback function
 
 
@@ -52,9 +52,9 @@ create a html container. (The children text content will be used as strings if n
     </div>
  ```  
 include the Type.js as a module:
-
+```html
     <script type="module" src="Typer.js"></script>
-
+```
 import the module at your script (make sure to put the type as 'module'):
 
 create an object of Typer with argument of the target css selector
