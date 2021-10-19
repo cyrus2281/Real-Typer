@@ -4,71 +4,54 @@ An Angular component that gives the effect of typing for texts
 
 
 ## Inputs:
-    strings : string | string[] : (default: Undefined)     : Strings to be type, this value can be pass as an argument or be children of the selected component
+    strings : string | string[] : (default: Undefined) : Strings to be type, this value can be pass as an argument or be children of the selected component
        
-    cursorCharacter (default: "|")   : value for the cursor symbol. put "" for no cursor
+    cursorCharacter : string : (default: "|")          : value for the cursor symbol. put "" for no cursor
     
-    typeSpeed (default: 100)         : the speed at which the characters are written
+    typeSpeed : number : (default: 100)                : the speed at which the characters are written
     
-    deleteSpeed (default: 50)        : the speed at which the characters are deleted
+    deleteSpeed : number : (default: 50)               : the speed at which the characters are deleted
     
-    holdDelay (default: 1500)        : the amount of delay before starting to delete
+    holdDelay : number : (default: 1500)               : the amount of delay before starting to delete
     
-    pauseDelay (default: 1000)       : the amount of delay before starting the next string
+    pauseDelay : number : (default: 1000)              : the amount of delay before starting the next string
 
-    startDelay (default: 0)          : the amount of delay before starting to type since the call of method
+    startDelay : number : (default: 0)                 : the amount of delay before starting to type since the call of method
     
-    delete (default: true)           : whether to delete the string or not
+    delete : boolean : (default: true)                 : whether to delete the string or not
     
-    deleteLastString (default: true) : whether to delete the last string or not (only happens if 'delete' is true)
+    deleteLastString : boolean : (default: true)       : whether to delete the last string or not (only happens if 'delete' is true)
     
-    loop (default: true)             : whether to loop or not
+    loop : boolean : (default: true)                   : whether to loop or not
     
-    loopHold (default: 1500)         : the amount of pause before repeating the cycle
+    loopHold : number : (default: 1500)                : the amount of pause before repeating the cycle
     
-    loopStartIndex (default: 0)      : Index of the string that the loop will start from the second cycle and on
+    loopStartIndex : number : (default: 0)             : Index of the string that the loop will start from the second cycle and on
 
-    callback (default: null)         : callback function that will run after each cycle
+    callback : Function : (default: null)              : callback function that will run after each cycle
 
-    callbackArgs (default: null)     : argument that will be passed to the callback function
+    callbackArgs : any : (default: null)               : argument that will be passed to the callback function
 
-    developerMode (default: false)   : logs errors in the console for debugging [recommend for development]
+    developerMode : boolean : (default: false)         : logs errors in the console for debugging [recommend for development]
 
+
+## Outputs:
+    callBackOutput : any                               : Once the callback function is finished, it will emit the output as an event
 
 
 ## Quick Start:
 
-create a html container. (The children text content will be used as strings if no string is provided.)
+After adding the component to your module list, you can simply use it with "typer" tags
 ```html
-    <div class="typer">
-        <p>First Sample Text</p>
-        <p>Second Sample Text</p>
-        <p>Third Sample Text</p>
-    </div>
+<typer [strings]="'Hello World'"></typer>
  ```  
-include the Typer.js as a module:
-```html
-    <script type="module" src="Typer.js"></script>
-```
-import the module at your script (make sure to put the type as 'module'):
 
-create an object of Typer with argument of the target css selector.
-
-apply any customization that you want.
-
-call the type method to start typing.
-```html
-    <script type="module">
-        import Typer from "./Typer.js";
-        const typer = new Typer(".typer");
-        typer.type();
-    </script>
-```
+You can either pass a string or an array of strings.
 
 
 ## Full Customization
 
-the following properties can be changed.
+the following properties can be customized.
 ```html
 <typer 
   [strings]="'hello'"
