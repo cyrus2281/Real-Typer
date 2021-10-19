@@ -32,6 +32,7 @@ export default function Typer(cssSelector, strings = []) {
     this.loopStartIndex = 0;
     this.callback = null;
     this.callbackArgs = null;
+    this.developerMode = false;
 
 }
 Typer.prototype.type = function() {
@@ -112,7 +113,8 @@ Typer.prototype.type = function() {
 
 function _checkValues(self) {
     if (!document.querySelector(self.cssSelector)) {
-        console.error("Could not find the " + self.cssSelector)
+        if (self.developerMode)
+            console.error("Could not find the " + self.cssSelector);
         return false
     }
     if (self.strings.length < 1) {
@@ -123,7 +125,8 @@ function _checkValues(self) {
             }, []
         );
         if (text.length < 1) {
-            console.warn("Could not find any strings. Adding default values.")
+            if (self.developerMode)
+                console.warn("Could not find any strings. Adding default values.");
             self.strings = ["Hi there, Hello", "This is Example", 'Put your own values', "Good Luck"];
         } else {
             self.strings = text
@@ -131,12 +134,14 @@ function _checkValues(self) {
     }
 
     if (!(self.loopStartIndex < self.strings.length)) {
-        console.error("loop start value can not be bigger than length of the strings(" + self.strings.length + ")")
+        if (self.developerMode)
+            console.error("loop start value can not be bigger than length of the strings(" + self.strings.length + ")");
         return false;
     }
     if (self.callback !== null) {
         if (!(self.callback instanceof Function)) {
-            console.error('Only a function can be assigned to callback');
+            if (self.developerMode)
+                console.error('Only a function can be assigned to callback');
             return false;
         }
     }

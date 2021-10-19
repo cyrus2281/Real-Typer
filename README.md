@@ -40,6 +40,7 @@ https://typer-js.netlify.app/
 
     callbackArgs (default: null)     : argument that will be passed to the callback function
 
+    developerMode (default: false)   : logs errors in the console for debugging [recommend for development]
 
 
 
@@ -94,6 +95,7 @@ the following properties can be changed.
         typer.loopStartIndex = 0
         typer.callback = null;
         typer.callbackArgs = null;
+        typer.developerMode = true;
         typer1.type();
     </script>
 ```
