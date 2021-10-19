@@ -4,7 +4,7 @@ An Angular component that gives the effect of typing for texts
 
 
 ## Inputs:
-    strings : string | string[] : (default: Undefined) : Strings to be type, this value can be pass as an argument or be children of the selected component
+    strings : string | string[] : (default: Undefined) : Strings to be type, this value can be passed both as an string or an array of strings
        
     cursorCharacter : string : (default: "|")          : value for the cursor symbol. put "" for no cursor
     
@@ -54,7 +54,7 @@ You can either pass a string or an array of strings.
 the following properties can be customized.
 ```html
 <typer 
-  [strings]="'hello'"
+  [strings]="['Hello','World','From','Typer.js']"
   [cursorCharacter]="'|'"
   [typeSpeed]=100
   [deleteSpeed]=50
