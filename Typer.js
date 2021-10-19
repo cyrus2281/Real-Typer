@@ -34,79 +34,79 @@ export default function Typer(cssSelector, strings = []) {
     this.callbackArgs = null;
 
 }
-Typer.prototype.type = function () {
-    let self = this;
+Typer.prototype.type = function() {
     if (!_checkValues(this)) {
         return 0;
     };
-    let container = document.querySelector(self.cssSelector);
+    let container = document.querySelector(this.cssSelector);
     //total time from start
-    let currentTypeSpeed = self.startDelay;
+    let currentTypeSpeed = this.startDelay;
     //word count
-    let wordCount = 0
-    function typing(string) {
+    let wordCount = 0;
+
+    const typing = (string) => {
         //current word count
         let currentCount = wordCount
-        //word to write
+            //word to write
         let word = ""
-        //going through each character
+            //going through each character
         for (const char of string) {
             //adding the character
             word += char;
             //applying closure to keep value after web API's response
             let currentWord = word;
-            currentTypeSpeed += self.typeSpeed;
+            currentTypeSpeed += this.typeSpeed;
             setTimeout(() => {
-                container.textContent = currentWord + self.cursorCharacter;
+                container.textContent = currentWord + this.cursorCharacter;
                 //if the last word is complete 
-                if ((!self.delete) && currentWord == string && currentCount + 1 == self.strings.length) {
+                if ((!this.delete) && currentWord == string && currentCount + 1 == this.strings.length) {
                     //if callback has a function, run it and pass args
-                    if (self.callback !== null) {
-                        self.callback(self.callbackArgs);
+                    if (this.callback !== null) {
+                        this.callback(this.callbackArgs);
                     }
                     //if the loop is true, repeat
-                    if (self.loop) {
-                        wordCount = self.loopStartIndex;
-                        currentTypeSpeed = self.loopHold;
-                        typing(self.strings[wordCount]);
+                    if (this.loop) {
+                        wordCount = this.loopStartIndex;
+                        currentTypeSpeed = this.loopHold;
+                        typing(this.strings[wordCount]);
                     }
                 }
             }, currentTypeSpeed)
         }
         //checking whether to delete words or not
-        if (self.delete) {
+        if (this.delete) {
             //waiting before delete
-            currentTypeSpeed += self.holdDelay;
+            currentTypeSpeed += this.holdDelay;
             //checking whether to delete the word or not
-            if ((wordCount + 1 < self.strings.length) || self.deleteLastString) {
+            if ((wordCount + 1 < this.strings.length) || this.deleteLastString) {
                 //deleting the word
                 for (let index = word.length; index >= 0; index--) {
-                    currentTypeSpeed += self.deleteSpeed
+                    currentTypeSpeed += this.deleteSpeed
                     let currentCount = wordCount
                     setTimeout(() => {
-                        container.textContent = word.slice(0, index) + self.cursorCharacter;
+                        container.textContent = word.slice(0, index) + this.cursorCharacter;
                         //if it is the last character of the last word
-                        if (index == 0 && currentCount + 1 == self.strings.length) {
+                        if (index == 0 && currentCount + 1 == this.strings.length) {
                             //if callback has a function, run it and pass args
-                            if (self.callback !== null) {
-                                self.callback(self.callbackArgs);
+                            if (this.callback !== null) {
+                                this.callback(this.callbackArgs);
                             }
                             //if loop is true, repeat
-                            if (self.loop) {
-                                wordCount = self.loopStartIndex;
-                                currentTypeSpeed = self.loopHold;
-                                typing(self.strings[wordCount]);
+                            if (this.loop) {
+                                wordCount = this.loopStartIndex;
+                                currentTypeSpeed = this.loopHold;
+                                typing(this.strings[wordCount]);
                             }
                         }
                     }, currentTypeSpeed)
                 }
             }
         }
-        currentTypeSpeed += self.pauseDelay;
+        currentTypeSpeed += this.pauseDelay;
         //going through each string
-        if (++wordCount < self.strings.length) typing(self.strings[wordCount])
+        if (++wordCount < this.strings.length) typing(this.strings[wordCount])
     }
-    typing(self.strings[0])
+    typing(this.strings[0])
 }
 
 
@@ -116,13 +116,11 @@ function _checkValues(self) {
         return false
     }
     if (self.strings.length < 1) {
-        console.log();
         let text = [...document.querySelector(self.cssSelector).children].reduce(
             (acc, cur) => {
                 acc.push(cur.textContent);
                 return acc;
-            },
-            []
+            }, []
         );
         if (text.length < 1) {
             console.warn("Could not find any strings. Adding default values.")
