@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, View
 
 
 /**
- *   Typer.js for Angular
+ *   Typer.ts for Angular
  *
  *   An Angular component that gives the effect of typing for texts
  *
