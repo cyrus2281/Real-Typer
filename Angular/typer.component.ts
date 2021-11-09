@@ -49,7 +49,6 @@ export class TyperComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.typer = this.typerRef.nativeElement;
-    console.log(this.typer);
     this.type();
   }
 
