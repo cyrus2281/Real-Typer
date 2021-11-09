@@ -53,7 +53,7 @@
        return false;
      } else {
        if (typeof this.state.strings == "string") {
-         this.state.strings = [this.state.strings];
+         this.setState({strings : [this.state.strings]});
        }
  
        if (!(this.state.loopStartIndex < this.state.strings?.length)) {
@@ -82,6 +82,7 @@
      if (!this._checkValues()) {
        return;
      }
+ 
      //total time from start
      let currentTypeSpeed = this.state.startDelay;
      //word count
@@ -98,6 +99,7 @@
          //applying closure to keep value after web API's response
          let currentWord = word;
          currentTypeSpeed += this.state.typeSpeed;
+         // eslint-disable-next-line no-loop-func
          setTimeout(() => {
            this.setState(
              { stringOutput: currentWord + this.state.cursorCharacter },
@@ -136,6 +138,7 @@
            for (let index = word.length; index >= 0; index--) {
              currentTypeSpeed += this.state.deleteSpeed;
              let currentCount = wordCount;
+             // eslint-disable-next-line no-loop-func
              setTimeout(() => {
                this.setState(
                  {
