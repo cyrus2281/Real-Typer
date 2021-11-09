@@ -1,5 +1,5 @@
 # Typer.js
-An Angular component that gives the effect of typing for texts
+A React component that gives the effect of typing for texts
 
 
 
@@ -34,18 +34,16 @@ An Angular component that gives the effect of typing for texts
 
     developerMode : boolean : (default: false)         : logs errors in the console for debugging [recommend for development]
 
-    styles : css object : (default: {})                : css styles if form of javascript object
+    classes : string : (default: '')                   : class names that will be added to the component
 
 
-## Outputs:
-    callBackOutput : any                               : Once the callback function is finished, it will emit the output as an event
 
 
 ## Quick Start:
 
 After adding the component to your module list, you can simply use it with "typer" tags
-```html
-<typer [strings]="'Hello World'"></typer>
+```jsx
+    <TyperComponent strings={['Hello','World']}></TyperComponent>
  ```  
 
 You can either pass a string or an array of strings.
@@ -54,27 +52,26 @@ You can either pass a string or an array of strings.
 ## Full Customization
 
 the following properties can be customized.
-```html
-<typer 
-  [strings]="['Hello','World','From','Typer.js']"
-  [cursorCharacter]="'|'"
-  [typeSpeed]=100
-  [deleteSpeed]=50
-  [holdDelay]=1500
-  [pauseDelay]=1000
-  [startDelay]=0
-  [delete]=true
-  [deleteLastString]=true
-  [loop]=true
-  [loopHold]=1500
-  [loopStartIndex]=0
-  [callback]="functionName"
-  [callbackArgs]="{}"
-  [developerMode]=true
-  [styles]="{'background-color': 'black', 'color':'white'}"
-  (callBackOutput)="callBackOutputHandler($event)"
+```jsx
+<TyperComponent 
+  strings={['Hello','World','From','Typer.js']}
+  cursorCharacter="|"
+  typeSpeed={100}
+  deleteSpeed={50}
+  holdDelay={1500}
+  pauseDelay={1000}
+  startDelay={0}
+  delete={true}
+  deleteLastString={true}
+  loop={true}
+  loopHold={1500}
+  loopStartIndex={0}
+  callback={functionName}
+  callbackArgs={{}}
+  developerMode={true}
+  classes="className"
   >
-</typer>
+</TyperComponent>
 ```
 
 

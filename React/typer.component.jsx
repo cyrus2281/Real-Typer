@@ -1,5 +1,5 @@
 /**
- *   Typer.jsx for React
+ *   Typer.js for React
  *
  *   A React component that gives the effect of typing for texts
  *
@@ -17,29 +17,30 @@
  import React from "react";
 
  export class TyperComponent extends React.Component {
- 
-   constructor(props) {
+   constructor() {
      super();
-     this.state = { 
-         cursorCharacter: "|",
-         typeSpeed: 100,
-         deleteSpeed: 50,
-         holdDelay: 1500,
-         pauseDelay: 1000,
-         startDelay: 0,
-         delete: true,
-         deleteLastString: true,
-         loop: true,
-         loopHold: 1500,
-         loopStartIndex: 0,
-         callback: undefined,
-         callbackArgs: undefined,
-         developerMode: false,
-         classes: "",
-         stringOutput: "",
-         ...props
-      };
-     this.type();
+     this.state = {
+       cursorCharacter: "|",
+       typeSpeed: 100,
+       deleteSpeed: 50,
+       holdDelay: 1500,
+       pauseDelay: 1000,
+       startDelay: 0,
+       delete: true,
+       deleteLastString: true,
+       loop: true,
+       loopHold: 1500,
+       loopStartIndex: 0,
+       callback: undefined,
+       callbackArgs: undefined,
+       developerMode: false,
+       classes: "",
+       stringOutput: "",
+     };
+   }
+ 
+   componentDidMount() {
+     this.setState({ ...this.props }, this.type);
    }
  
    _checkValues = () => {
@@ -98,24 +99,28 @@
          let currentWord = word;
          currentTypeSpeed += this.state.typeSpeed;
          setTimeout(() => {
-           this.setState({ stringOutput: currentWord + this.state.cursorCharacter });
-           //if the last word is complete
-           if (
-             !this.state.delete &&
-             currentWord == string &&
-             currentCount + 1 == this.state.strings.length
-           ) {
-             //if callback has a function, run it and pass args
-             if (!!this.state.callback) {
-               this.state.callback(this.state.callbackArgs);
+           this.setState(
+             { stringOutput: currentWord + this.state.cursorCharacter },
+             () => {
+               //if the last word is complete
+               if (
+                 !this.state.delete &&
+                 currentWord == string &&
+                 currentCount + 1 == this.state.strings.length
+               ) {
+                 //if callback has a function, run it and pass args
+                 if (!!this.state.callback) {
+                   this.state.callback(this.state.callbackArgs);
+                 }
+                 //if the loop is true, repeat
+                 if (this.state.loop) {
+                   wordCount = this.state.loopStartIndex;
+                   currentTypeSpeed = this.state.loopHold;
+                   typing(this.state.strings[wordCount]);
+                 }
+               }
              }
-             //if the loop is true, repeat
-             if (this.state.loop) {
-               wordCount = this.state.loopStartIndex;
-               currentTypeSpeed = this.state.loopHold;
-               typing(this.state.strings[wordCount]);
-             }
-           }
+           );
          }, currentTypeSpeed);
        }
        //checking whether to delete words or not
@@ -132,22 +137,30 @@
              currentTypeSpeed += this.state.deleteSpeed;
              let currentCount = wordCount;
              setTimeout(() => {
-               this.setState({ stringOutput: word.slice(0, index) + this.state.cursorCharacter });
-               //if it is the last character of the last word
-               if (index == 0 && currentCount + 1 == this.state.strings.length) {
-                 //if callback has a function, run it and pass args
-                 if (!!this.state.callback) {
-                   this.state.callBackOutput.emit(
-                     this.state.callback(this.state.callbackArgs)
-                   );
+               this.setState(
+                 {
+                   stringOutput:
+                     word.slice(0, index) + this.state.cursorCharacter,
+                 },
+                 () => {
+                   //if it is the last character of the last word
+                   if (
+                     index == 0 &&
+                     currentCount + 1 == this.state.strings.length
+                   ) {
+                     //if callback has a function, run it and pass args
+                     if (!!this.state.callback) {
+                       this.state.callback(this.state.callbackArgs);
+                     }
+                     //if loop is true, repeat
+                     if (this.state.loop) {
+                       wordCount = this.state.loopStartIndex;
+                       currentTypeSpeed = this.state.loopHold;
+                       typing(this.state.strings[wordCount]);
+                     }
+                   }
                  }
-                 //if loop is true, repeat
-                 if (this.state.loop) {
-                   wordCount = this.state.loopStartIndex;
-                   currentTypeSpeed = this.state.loopHold;
-                   typing(this.state.strings[wordCount]);
-                 }
-               }
+               );
              }, currentTypeSpeed);
            }
          }
