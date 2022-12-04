@@ -1,4 +1,4 @@
-# Typer.js
+# Real-Typer
 An Angular component that gives the effect of typing for texts
 
 
@@ -56,7 +56,7 @@ You can either pass a string or an array of strings.
 the following properties can be customized.
 ```html
 <typer 
-  [strings]="['Hello','World','From','Typer.js']"
+  [strings]="['Hello','World','From','Real-Typer']"
   [cursorCharacter]="'|'"
   [typeSpeed]=100
   [deleteSpeed]=50
@@ -86,12 +86,12 @@ the following properties can be customized.
 <br>
 
 <small>
-Typer.js
+Real-Typer
 
-author: Milad Mobini
+author: Cyrus Mobini
     
 Licensed under the MIT license.
 http://www.opensource.org/licenses/mit-license.php
 
-Copyright 2021, [EcoCyrus](https://www.ecocyrus.com), Milad Mobini 
+Copyright 2022 [Cyrus Mobini](https://github.com/cyrus2281)
 <small>
