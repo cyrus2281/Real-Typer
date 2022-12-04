@@ -1,3 +1,4 @@
+[![npm version](https://badge.fury.io/js/real-typer.svg)](https://badge.fury.io/js/real-typer)
 # Real-Typer
 This JavaScript module gives the effect of typing for texts displayed on websites.
 
@@ -7,20 +8,18 @@ Real-Typer now also comes to **Angular**. You can simply add the typer component
 
 Sample and a quick guide to module can also be founded on the following link (index.html).
 
-https://typer-js.netlify.app/
+https://real-typer.netlify.app/
 
 
 
 
 ### Documentation
-- [JavaScript](https://github.com/cyrus2281/Real-Typer/tree/main/JavaScript)
-- [Angular](https://github.com/cyrus2281/Real-Typer/tree/main/Angular)
+- [JavaScript](https://github.com/cyrus2281/Real-Typer/blob/main/src/JavaScript/README.md)
+- [Angular](https://github.com/cyrus2281/Real-Typer/blob/main/src/Angular/README.md)
+- [React](https://github.com/cyrus2281/Real-Typer/blob/main/src/React/README.md)
 
 
 
-
-<br>
-<br>
 <br>
 
 <small>

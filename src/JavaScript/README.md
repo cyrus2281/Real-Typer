@@ -1,6 +1,6 @@
 # Real-Typer
 This JavaScript module gives the effect of typing for texts displayed on websites.
-[Hosted On](https://typer-js.netlify.app/)
+[Hosted On](https://real-typer.netlify.app/)
 
 
 

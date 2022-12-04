@@ -1,29 +1,25 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 
-
 /**
- *   Typer.ts for Angular
+ *   RealTyper for Angular
  *
  *   An Angular component that gives the effect of typing for texts
  *
- *   author: Cyrus Mobini
  *
- *   Licensed under the MIT license.
- *   http://www.opensource.org/licenses/mit-license.php
- *
- *   Copyright 2022 Cyrus Mobini (https://github.com/cyrus2281)
+ *   [Github](https://github.com/cyrus2281)
  *
  *
  */
 @Component({
-  selector: 'typer',
+  selector: 'real-typer',
   template:
   `
+  <div> THIS IS A TEST </div>
   <div #typer [ngStyle]="styles"></div>
   `,
   styles: []
 })
-export class TyperComponent implements AfterViewInit {
+export class RealTyperComponent implements AfterViewInit {
   @Input() strings !: string | string[];
   @Input() cursorCharacter : string = "|";
   @Input() typeSpeed: number = 100;

@@ -2,7 +2,7 @@
   "name": "real-typer",
   "version": "1.0.0",
   "description": "A JavaScript library that gives the effect of typing texts",
-  "main": "./src/index.js",
+  "main": "src/index.js",
   "scripts": {
     "build": "webpack --mode production"
   },
