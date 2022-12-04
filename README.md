@@ -13,8 +13,8 @@ https://real-typer.netlify.app/
 
 
 ## Documentation
-### [JavaScript](https://github.com/cyrus2281/Real-Typer/blob/main/src/JavaScript/README.md)
-### [@Real-Typer/Angular ](https://github.com/cyrus2281/Real-Typer/blob/main/src/Angular/project/real-typer/README.md) [![ npm version](https://badge.fury.io/js/@real-typer%2Fangular.svg)](https://badge.fury.io/js/@real-typer%2Fangular)
+### [Real-Typer](https://github.com/cyrus2281/Real-Typer/tree/main/src/JavaScript#readme) [![npm version](https://badge.fury.io/js/real-typer.svg)](https://badge.fury.io/js/real-typer)
+### [@Real-Typer/Angular ](https://github.com/cyrus2281/Real-Typer/tree/main/src/Angular/projects/real-typer#readme) [![ npm version](https://badge.fury.io/js/@real-typer%2Fangular.svg)](https://badge.fury.io/js/@real-typer%2Fangular)
 ### [React](https://github.com/cyrus2281/Real-Typer/blob/main/src/React/README.md)
 
 

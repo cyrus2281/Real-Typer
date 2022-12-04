@@ -1,8 +1,9 @@
-# Real-Typer
+# Real-Typer [![npm version](https://badge.fury.io/js/real-typer.svg)](https://badge.fury.io/js/real-typer)
 This JavaScript module gives the effect of typing for texts displayed on websites.
 [Hosted On](https://real-typer.netlify.app/)
 
 
+- For Angular check [@Real-Typer/Angular ](https://github.com/cyrus2281/Real-Typer/tree/main/src/Angular/projects/real-typer#readme)
 
 
 
@@ -57,15 +58,15 @@ include the Real-Typer as a module:
 ```
 import the module at your script (make sure to put the type as 'module'):
 
-create an object of Typer with argument of the target css selector.
+create an object of RealTyper with argument of the target css selector.
 
 apply any customization that you want.
 
 call the type method to start typing.
 ```html
     <script type="module">
-        import Typer from "./Real-Typer";
-        const typer = new Typer(".typer");
+        import RealTyper from "./Real-Typer";
+        const typer = new RealTyper(".typer");
         typer.type();
     </script>
 ```
@@ -76,8 +77,8 @@ call the type method to start typing.
 the following properties can be changed.
 ```html
     <script type="module">
-        import Typer from "./Real-Typer";
-        const typer = new Typer(".typer");
+        import RealTyper from "./Real-Typer";
+        const typer = new RealTyper(".typer");
         typer.strings = ['sample one','sample two','sample three'];
         typer.cursorCharacter = "|";
         typer.typeSpeed = 100;
@@ -97,10 +98,6 @@ the following properties can be changed.
     </script>
 ```
 
-
-
-
-
 <br>
 <br>
 <br>
@@ -108,7 +105,7 @@ the following properties can be changed.
 <small>
 Real-Typer
 
-author: Cyrus Mobini
+Author: Cyrus Mobini
     
 Licensed under the MIT license.
 http://www.opensource.org/licenses/mit-license.php

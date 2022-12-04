@@ -1,9 +1,65 @@
 # @Real-Typer/Angular [![npm version](https://badge.fury.io/js/@real-typer%2Fangular.svg)](https://badge.fury.io/js/@real-typer%2Fangular)
 An Angular component that gives the effect of typing for texts
 
+## Install 
+> npm install @real-typer/angular
+
+## Adding To App
+import `RealTyperModule`
+```js
+import { RealTyperModule } from '@real-typer/angular';
+```
+add to `app.module.ts` in `imports` array
+```js
+@NgModule({
+  declarations: [],
+  imports: [
+    RealTyperModule
+  ],
+  providers: [],
+  bootstrap: []
+})
+```
+
+## Quick Start:
+
+After adding the component to your module list, you can simply use it with "real-typer" tags
+```html
+<real-typer [strings]="'Hello World'"></real-typer>
+ ```  
+
+You can either pass a string or an array of strings.
 
 
-## Inputs:
+## Customization
+
+the following properties can be customized.
+```html
+<real-typer 
+  [strings]="['Hello','World','From','Real-Typer']"
+  [cursorCharacter]="'|'"
+  [typeSpeed]=100
+  [deleteSpeed]=50
+  [holdDelay]=1500
+  [pauseDelay]=1000
+  [startDelay]=0
+  [delete]=true
+  [deleteLastString]=true
+  [loop]=true
+  [loopHold]=1500
+  [loopStartIndex]=0
+  [callback]="functionName"
+  [callbackArgs]="{}"
+  [developerMode]=true
+  [styles]="{'background-color': 'black', 'color':'white'}"
+  (callBackOutput)="callBackOutputHandler($event)"
+  >
+</real-typer>
+```
+
+## Interface
+
+### Inputs:
     strings : string | string[] : (default: Undefined) : Strings to be type, this value can be passed both as an string or an array of strings
        
     cursorCharacter : string : (default: "|")          : value for the cursor symbol. put "" for no cursor
@@ -37,48 +93,8 @@ An Angular component that gives the effect of typing for texts
     styles : css object : (default: {})                : css styles if form of javascript object
 
 
-## Outputs:
+### Outputs:
     callBackOutput : any                               : Once the callback function is finished, it will emit the output as an event
-
-
-## Quick Start:
-
-After adding the component to your module list, you can simply use it with "typer" tags
-```html
-<real-typer [strings]="'Hello World'"></real-typer>
- ```  
-
-You can either pass a string or an array of strings.
-
-
-## Full Customization
-
-the following properties can be customized.
-```html
-<real-typer 
-  [strings]="['Hello','World','From','Real-Typer']"
-  [cursorCharacter]="'|'"
-  [typeSpeed]=100
-  [deleteSpeed]=50
-  [holdDelay]=1500
-  [pauseDelay]=1000
-  [startDelay]=0
-  [delete]=true
-  [deleteLastString]=true
-  [loop]=true
-  [loopHold]=1500
-  [loopStartIndex]=0
-  [callback]="functionName"
-  [callbackArgs]="{}"
-  [developerMode]=true
-  [styles]="{'background-color': 'black', 'color':'white'}"
-  (callBackOutput)="callBackOutputHandler($event)"
-  >
-</real-typer>
-```
-
-
-
 
 
 <br>
@@ -86,9 +102,9 @@ the following properties can be customized.
 <br>
 
 <small>
-Real-Typer
+@Real-Typer/Angular
 
-author: Cyrus Mobini
+Author: Cyrus Mobini
     
 Licensed under the MIT license.
 http://www.opensource.org/licenses/mit-license.php
