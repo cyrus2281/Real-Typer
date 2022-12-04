@@ -1,4 +1,4 @@
-# Typer.js
+# Real-Typer
 This JavaScript module gives the effect of typing for texts displayed on websites.
 [Hosted On](https://typer-js.netlify.app/)
 
@@ -51,9 +51,9 @@ create a html container. (The children text content will be used as strings if n
         <p>Third Sample Text</p>
     </div>
  ```  
-include the Typer.js as a module:
+include the Real-Typer as a module:
 ```html
-    <script type="module" src="Typer.js"></script>
+    <script type="module" src="Real-Typer"></script>
 ```
 import the module at your script (make sure to put the type as 'module'):
 
@@ -64,7 +64,7 @@ apply any customization that you want.
 call the type method to start typing.
 ```html
     <script type="module">
-        import Typer from "./Typer.js";
+        import Typer from "./Real-Typer";
         const typer = new Typer(".typer");
         typer.type();
     </script>
@@ -76,7 +76,7 @@ call the type method to start typing.
 the following properties can be changed.
 ```html
     <script type="module">
-        import Typer from "./Typer.js";
+        import Typer from "./Real-Typer";
         const typer = new Typer(".typer");
         typer.strings = ['sample one','sample two','sample three'];
         typer.cursorCharacter = "|";
@@ -106,12 +106,12 @@ the following properties can be changed.
 <br>
 
 <small>
-Typer.js
+Real-Typer
 
-author: Milad Mobini
+author: Cyrus Mobini
     
 Licensed under the MIT license.
 http://www.opensource.org/licenses/mit-license.php
 
-Copyright 2021, [EcoCyrus](https://www.ecocyrus.com), Milad Mobini 
+Copyright 2022 [Cyrus Mobini](https://github.com/cyrus2281)
 <small>

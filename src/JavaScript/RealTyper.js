@@ -1,15 +1,14 @@
 /**
- *   Typer.js
+ *   Real-Typer
  * 
  *   A JavaScript module that gives the effect of typing for texts
  *  
- *   author: Milad Mobini
+ *   author: Cyrus Mobini
  *
  *   Licensed under the MIT license.
  *   http://www.opensource.org/licenses/mit-license.php
  *
- *   Copyright 2021, EcoCyrus, Milad Mobini
- *   https://www.ecocyrus.com
+ *   Copyright 2022 Cyrus Mobini (https://github.com/cyrus2281)
  * 
  * 
  * 
