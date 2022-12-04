@@ -1,11 +1,33 @@
 {
-  "name": "real-typer",
-  "version": "0.0.1",
+  "name": "@real-typer/angular",
+  "author": "Cyrus Mobini (cyrus2281)",
+  "description": "An Angular library that gives the effect of typing texts",
+  "version": "1.0.7",
+  "private": false,
   "peerDependencies": {
-    "@angular/common": "^12.2.0",
-    "@angular/core": "^12.2.0"
+    "@angular/common": "^15.0.0",
+    "@angular/core": "^15.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cyrus2281/Real-Typer.git"
+  },
+  "keywords": [
+    "angular-typer",
+    "real-typer-angular",
+    "angular-typing",
+    "typing effect",
+    "typing",
+    "real-typer",
+    "real-typing",
+    "typer"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cyrus2281/Real-Typer/issues"
+  },
+  "homepage": "https://github.com/cyrus2281/Real-Typer/Angular/projects/rea-typer#readme"
 }

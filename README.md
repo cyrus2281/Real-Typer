@@ -1,5 +1,4 @@
-[![npm version](https://badge.fury.io/js/real-typer.svg)](https://badge.fury.io/js/real-typer)
-# Real-Typer
+# @Real-Typer
 This JavaScript module gives the effect of typing for texts displayed on websites.
 
 Real-Typer  is a light weight JavaScript module that allows you to simulate the action of real-time typing for texts on a websites. Real-Typer gives you lots of customizations to fully customize the simulation for your need.
@@ -13,10 +12,10 @@ https://real-typer.netlify.app/
 
 
 
-### Documentation
-- [JavaScript](https://github.com/cyrus2281/Real-Typer/blob/main/src/JavaScript/README.md)
-- [Angular](https://github.com/cyrus2281/Real-Typer/blob/main/src/Angular/README.md)
-- [React](https://github.com/cyrus2281/Real-Typer/blob/main/src/React/README.md)
+## Documentation
+### [JavaScript](https://github.com/cyrus2281/Real-Typer/blob/main/src/JavaScript/README.md)
+### [@Real-Typer/Angular ](https://github.com/cyrus2281/Real-Typer/blob/main/src/Angular/project/real-typer/README.md) [![ npm version](https://badge.fury.io/js/@real-typer%2Fangular.svg)](https://badge.fury.io/js/@real-typer%2Fangular)
+### [React](https://github.com/cyrus2281/Real-Typer/blob/main/src/React/README.md)
 
 
 

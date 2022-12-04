@@ -14,7 +14,6 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, View
   selector: 'real-typer',
   template:
   `
-  <div> THIS IS A TEST </div>
   <div #typer [ngStyle]="styles"></div>
   `,
   styles: []

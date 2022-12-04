@@ -11,9 +11,7 @@ describe('RealTyperComponent', () => {
       declarations: [ RealTyperComponent ]
     })
     .compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(RealTyperComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

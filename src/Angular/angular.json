@@ -27,13 +27,14 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/real-typer/src/test.ts",
             "tsConfig": "projects/real-typer/tsconfig.spec.json",
-            "karmaConfig": "projects/real-typer/karma.conf.js"
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
           }
         }
       }
     }
-  },
-  "defaultProject": "RealTyper"
+  }
 }
