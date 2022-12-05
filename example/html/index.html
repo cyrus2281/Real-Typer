@@ -19,64 +19,80 @@ Copyright 202 Cyrus Mobini https://github.com/cyrus2281
         padding: 0;
         margin: 0;
       }
+
       header {
         padding: 1rem;
         text-align: center;
         background: rgb(218, 233, 0);
       }
+
       h1 {
         font-family: cursive;
         padding-bottom: 1rem;
         font-size: 2rem;
       }
+
       .intro {
         font-size: 1.2rem;
       }
+
       .setup code {
         max-width: 400px;
       }
+
       .setup {
         padding: 1rem;
         background: rgb(215, 255, 106);
       }
+
       .setup h2 {
         padding: 1rem;
       }
+
       .setup {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
       }
+
       .setup code {
         height: 80px;
       }
+
       .grid {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
       }
+
       @media screen and (min-width: 756px) {
         .grid,
         .setup {
           grid-template-columns: repeat(2, 1fr);
         }
       }
+
       @media screen and (min-width: 992px) {
         .grid {
           grid-template-columns: repeat(3, 1fr);
         }
       }
+
       .col {
         padding: 1.5rem;
       }
+
       .col:nth-child(2n + 1) {
         background: #f0f0f0;
       }
+
       .col:nth-child(2n) {
         background: #fbfbfb;
       }
+
       .typer {
         padding: 1.5rem;
         font-size: 1.2rem;
       }
+
       pre code {
         margin: 0 auto;
         width: 90%;
@@ -87,6 +103,7 @@ Copyright 202 Cyrus Mobini https://github.com/cyrus2281
         display: block;
         padding: 0.2rem 1rem;
       }
+
       footer {
         background: rgb(24, 24, 24);
         color: white;
@@ -94,14 +111,15 @@ Copyright 202 Cyrus Mobini https://github.com/cyrus2281
         font-size: 1.4rem;
         padding: 1.5rem;
       }
+
       footer a {
         text-decoration: none;
         color: white;
       }
     </style>
     <title>Real-Typer</title>
-    <script type="module" src="./JavaScript/Real-Typer"></script>
   </head>
+
   <body>
     <header>
       <h1>Real-Typer</h1>
@@ -276,10 +294,9 @@ Copyright 202 Cyrus Mobini https://github.com/cyrus2281
       Copyright&copy; 2022 @
       <a href="https://github.com/cyrus2281/">Cyrus Mobini</a>
     </footer>
-
-    <script type="module">
-      import Typer from "../src//JavaScript/RealTyper.js";
-
+    <script src="https://cdn.statically.io/gh/cyrus2281/Real-Typer/main/src/JavaScript/dist/real-typer.min.js"></script>
+    <script>
+      const Typer = RealTyper.Typer;
       const typer = new Typer(".intro");
       typer.typeSpeed = 50;
       typer.deleteLastString = false;

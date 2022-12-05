@@ -5,9 +5,9 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, View
  *
  *   An Angular component that gives the effect of typing for texts
  *
+ *   [Doc](https://github.com/cyrus2281/Real-Typer/tree/main/src/Angular/projects/real-typer#readme)
  *
  *   [Github](https://github.com/cyrus2281)
- *
  *
  */
 @Component({

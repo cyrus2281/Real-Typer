@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "publish": "npm run build && cd dist/real-typer && npm publish --access public && cd ../.."
+    "publish": "npm run build && cd dist/real-typer && npm publish && cd ../.."
   },
   "private": true,
   "dependencies": {
