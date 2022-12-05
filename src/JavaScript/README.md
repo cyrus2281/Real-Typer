@@ -1,13 +1,82 @@
 # Real-Typer [![npm version](https://badge.fury.io/js/real-typer.svg)](https://badge.fury.io/js/real-typer)
-This JavaScript module gives the effect of typing for texts displayed on websites.
-[Hosted On](https://real-typer.netlify.app/)
+A JavaScript library that gives the effect of typing for texts displayed on websites.
+[Live Example](https://real-typer.netlify.app/)
 
 
 - For Angular check [@Real-Typer/Angular ](https://github.com/cyrus2281/Real-Typer/tree/main/src/Angular/projects/real-typer#readme)
 
+## Using CDN
+Import the CDN using `script` tags
+```html
+<script src="https://cdn.statically.io/gh/cyrus2281/Real-Typer/main/src/JavaScript/dist/real-typer.min.js"></script>
+```
+## Using NPM
+install package with
+> npm install real-typer
+
+import the file in your JS file.
+```js
+import 'real-typer'
+```
 
 
-## Variables:
+
+## Quick Start:
+
+create a html container. (The children text content will be used as strings if no string is provided.)
+```html
+    <div class="typer">
+        <p>First Sample Text</p>
+        <p>Second Sample Text</p>
+        <p>Third Sample Text</p>
+    </div>
+ ```  
+make sure you have imported the script using CDN or npm and import.
+
+create an object of RealTyper with argument of the target css selector.
+
+apply any customization that you want.
+
+call the type method to start typing.
+```html
+    <script>
+        const typer = new RealTyper.Typer(".typer");
+        typer.type();
+    </script>
+```
+
+if you app is not finding `RealTyper` call it with `window` prefix.
+```js
+    const typer = new window.RealTyper.Typer(".typer");
+```
+
+## Customization
+
+the following properties can be changed.
+```html
+    <script>
+        const typer = new RealTyper.Typer(".typer");
+        typer.strings = ['sample one','sample two','sample three'];
+        typer.cursorCharacter = "|";
+        typer.typeSpeed = 100;
+        typer.deleteSpeed = 50;
+        typer.holdDelay = 1500;
+        typer.pauseDelay = 1000;
+        typer.startDelay = 0;
+        typer.delete = true;
+        typer.deleteLastString = true;
+        typer.loop = true;
+        typer.loopHold = 1500;
+        typer.loopStartIndex = 0
+        typer.callback = null;
+        typer.callbackArgs = null;
+        typer.developerMode = true;
+        typer1.type();
+    </script>
+```
+
+
+## Interface:
     strings (default: Random text)   : Strings to be type, this value can be pass as an argument or be children of the selected component
 
     cssSelector (default: null)      : the html component that the strings are written to(given from). Must be a css selector
@@ -40,63 +109,6 @@ This JavaScript module gives the effect of typing for texts displayed on website
 
     developerMode (default: false)   : logs errors in the console for debugging [recommend for development]
 
-
-
-## Quick Start:
-
-create a html container. (The children text content will be used as strings if no string is provided.)
-```html
-    <div class="typer">
-        <p>First Sample Text</p>
-        <p>Second Sample Text</p>
-        <p>Third Sample Text</p>
-    </div>
- ```  
-include the Real-Typer as a module:
-```html
-    <script type="module" src="Real-Typer"></script>
-```
-import the module at your script (make sure to put the type as 'module'):
-
-create an object of RealTyper with argument of the target css selector.
-
-apply any customization that you want.
-
-call the type method to start typing.
-```html
-    <script type="module">
-        import RealTyper from "./Real-Typer";
-        const typer = new RealTyper(".typer");
-        typer.type();
-    </script>
-```
-
-
-## Full Customization
-
-the following properties can be changed.
-```html
-    <script type="module">
-        import RealTyper from "./Real-Typer";
-        const typer = new RealTyper(".typer");
-        typer.strings = ['sample one','sample two','sample three'];
-        typer.cursorCharacter = "|";
-        typer.typeSpeed = 100;
-        typer.deleteSpeed = 50;
-        typer.holdDelay = 1500;
-        typer.pauseDelay = 1000;
-        typer.startDelay = 0;
-        typer.delete = true;
-        typer.deleteLastString = true;
-        typer.loop = true;
-        typer.loopHold = 1500;
-        typer.loopStartIndex = 0
-        typer.callback = null;
-        typer.callbackArgs = null;
-        typer.developerMode = true;
-        typer1.type();
-    </script>
-```
 
 <br>
 <br>

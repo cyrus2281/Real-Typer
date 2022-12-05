@@ -1,13 +1,13 @@
 {
-  "name": "real-typer-test",
-  "version": "1.0.0",
+  "name": "real-typer",
+  "version": "1.0.5",
   "author": "Cyrus Mobini (cyrus2281)",
   "description": "A JavaScript module that gives the effect of typing texts",
   "main": "dist/real-typer.min.js",
   "private": false,
   "scripts": {
     "build": "webpack",
-    "publish": "npm run build && npm publish"
+    "upload": "npm run build && npm publish"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",

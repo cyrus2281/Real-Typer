@@ -1,5 +1,5 @@
 /**
- *   Real-Typer
+ *   RealTyper
  *
  *   A JavaScript module that gives the effect of typing for texts
  *
@@ -10,7 +10,7 @@
  * @param {*} cssSelector the html component that the strings are written to(given from). Must be a css selector
  * @param {*} strings     Strings to be type, if not given the children of target would be selected
  */
-export default class RealTyper {
+export class Typer {
   strings = undefined;
   cssSelector = undefined;
   cursorCharacter = "|";
@@ -160,3 +160,5 @@ export default class RealTyper {
     return true;
   };
 }
+
+export default Typer;

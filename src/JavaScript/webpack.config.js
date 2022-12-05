@@ -19,6 +19,7 @@ module.exports = {
   output: {
     filename: "real-typer.min.js", 
     library: 'RealTyper',
-    publicPath: '/dist/'
+    publicPath: '/dist/',
+   libraryTarget: 'window'
   },
 };
