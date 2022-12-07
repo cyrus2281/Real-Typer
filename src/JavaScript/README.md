@@ -1,5 +1,5 @@
 # Real-Typer [![npm version](https://badge.fury.io/js/real-typer.svg)](https://badge.fury.io/js/real-typer)
-A JavaScript library that gives the effect of typing for texts displayed on websites.
+A JavaScript library that gives the effect of typing for texts.
 [Live Example](https://real-typer.netlify.app/)
 
 
@@ -18,8 +18,6 @@ import the file in your JS file.
 ```js
 import 'real-typer'
 ```
-
-
 
 ## Quick Start:
 

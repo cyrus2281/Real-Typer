@@ -2,7 +2,7 @@
   "name": "@real-typer/angular",
   "author": "Cyrus Mobini (cyrus2281)",
   "description": "An Angular library that gives the effect of typing texts",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "private": false,
   "peerDependencies": {
     "@angular/common": "^15.0.0",

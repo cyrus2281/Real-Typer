@@ -69,7 +69,7 @@ export class RealTyperComponent implements AfterViewInit {
         setTimeout(() => {
           this.typer.textContent = currentWord + this.cursorCharacter;
           //if the last word is complete
-          if ((!this.delete) && currentWord == string && currentCount + 1 == this.strings.length) {
+          if ((!this.delete) && currentWord === string && currentCount + 1 === this.strings.length) {
             //if callback has a function, run it and pass args
             if (this.callback !== null) {
               this.callback(this.callbackArgs);
@@ -96,7 +96,7 @@ export class RealTyperComponent implements AfterViewInit {
             setTimeout(() => {
               this.typer.textContent = word.slice(0, index) + this.cursorCharacter;
               //if it is the last character of the last word
-              if (index == 0 && currentCount + 1 == this.strings.length) {
+              if (index === 0 && currentCount + 1 === this.strings.length) {
                 //if callback has a function, run it and pass args
                 if (!!this.callback) {
                   this.callBackOutput.emit(this.callback(this.callbackArgs));
@@ -127,7 +127,7 @@ export class RealTyperComponent implements AfterViewInit {
       }
       return false;
     } else {
-      if (typeof this.strings == "string") {
+      if (typeof this.strings === "string") {
         this.strings = [this.strings];
       }
 

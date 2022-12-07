@@ -1,21 +1,21 @@
-# @Real-Typer
-This JavaScript module gives the effect of typing for texts displayed on websites.
+# Real-Typer
+A JavaScript that library gives the effect of typing.
 
-Real-Typer  is a light weight JavaScript module that allows you to simulate the action of real-time typing for texts on a websites. Real-Typer gives you lots of customizations to fully customize the simulation for your need.
+Real-Typer  is a light weight JavaScript library that allows you to simulate the action of real-time typing for texts on a websites. Real-Typer gives you lots of customizations to fully customize the simulation for your need.
 
-Real-Typer now also comes to **Angular**. You can simply add the typer component to your angular project and enjoy the effect of typing
+Real-Typer now also comes to **Angular** and **React**. You can simply add the typer component to your Angular or React project and enjoy the effect of typing.
 
-Sample and a quick guide to module can also be founded on the following link (index.html).
 
-https://real-typer.netlify.app/
+`Examples` for all supporting platform can be found in the [Examples directory](./examples)
 
+[Click here](https://real-typer.netlify.app/) for a quick guide and a live example  of `Real-Typer`
 
 
 
 ## Documentation
-### [Real-Typer](https://github.com/cyrus2281/Real-Typer/tree/main/src/JavaScript#readme) [![npm version](https://badge.fury.io/js/real-typer.svg)](https://badge.fury.io/js/real-typer)
+### [Real-Typer (Vanilla JS)](https://github.com/cyrus2281/Real-Typer/tree/main/src/JavaScript#readme) [![npm version](https://badge.fury.io/js/real-typer.svg)](https://badge.fury.io/js/real-typer)
 ### [@Real-Typer/Angular ](https://github.com/cyrus2281/Real-Typer/tree/main/src/Angular/projects/real-typer#readme) [![ npm version](https://badge.fury.io/js/@real-typer%2Fangular.svg)](https://badge.fury.io/js/@real-typer%2Fangular)
-### [React](https://github.com/cyrus2281/Real-Typer/blob/main/src/React/README.md)
+### [@Real-Typer/React](https://github.com/cyrus2281/Real-Typer/blob/main/src/React#README) [![ npm version](https://badge.fury.io/js/@real-typer%2Freact.svg)](https://badge.fury.io/js/@real-typer%2Freact)
 
 
 
