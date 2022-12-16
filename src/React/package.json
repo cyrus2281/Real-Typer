@@ -6,15 +6,13 @@
   "private": false,
   "scripts": {
     "build": "webpack --mode production --progress",
-    "upload": "npm run build && npm publish --access public"
+    "upload": "npm run build && npm version patch && npm publish --access public"
   },
   "main": "dist/real-typer-react.js",
   "types": "dist/types/index.d.ts",
   "sideEffects": false,
   "files": [
-    "dist",
-    "src",
-    "types"
+    "dist"
   ],
   "devDependencies": {
     "@types/react": "^18.0.4",
