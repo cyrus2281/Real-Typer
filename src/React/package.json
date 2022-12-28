@@ -1,6 +1,6 @@
 {
   "name": "@real-typer/react",
-  "version": "1.0.7",
+  "version": "2.0.4",
   "author": "Cyrus Mobini (cyrus2281)",
   "description": "A React library that gives the effect of typing texts",
   "private": false,
@@ -21,6 +21,9 @@
     "typescript": "^4.8.3",
     "webpack": "^5.72.0",
     "webpack-cli": "^4.9.2"
+  },
+  "dependencies": {
+    "react": "^18.2.0"
   },
   "peerDependencies": {
     "react": "^18.2.0",
