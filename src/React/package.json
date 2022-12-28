@@ -1,20 +1,18 @@
 {
   "name": "@real-typer/react",
-  "version": "1.0.7",
+  "version": "2.0.4",
   "author": "Cyrus Mobini (cyrus2281)",
   "description": "A React library that gives the effect of typing texts",
   "private": false,
   "scripts": {
     "build": "webpack --mode production --progress",
-    "upload": "npm run build && npm publish --access public"
+    "upload": "npm run build && npm version patch && npm publish --access public"
   },
   "main": "dist/real-typer-react.js",
   "types": "dist/types/index.d.ts",
   "sideEffects": false,
   "files": [
-    "dist",
-    "src",
-    "types"
+    "dist"
   ],
   "devDependencies": {
     "@types/react": "^18.0.4",
@@ -23,6 +21,9 @@
     "typescript": "^4.8.3",
     "webpack": "^5.72.0",
     "webpack-cli": "^4.9.2"
+  },
+  "dependencies": {
+    "react": "^18.2.0"
   },
   "peerDependencies": {
     "react": "^18.2.0",

@@ -21,31 +21,31 @@ import 'real-typer'
 
 ## Quick Start:
 
-create a html container. (The children text content will be used as strings if no string is provided.)
+create a html container.
 ```html
-    <div class="typer">
-        <p>First Sample Text</p>
-        <p>Second Sample Text</p>
-        <p>Third Sample Text</p>
-    </div>
+    <div class="typer"></div>
  ```  
 make sure you have imported the script using CDN or npm and import.
 
-create an object of RealTyper with argument of the target css selector.
+create an object of RealTyper and pass the html element, the strings, and the options
 
-apply any customization that you want.
-
-call the type method to start typing.
+Then call the `type` method to start typing.
 ```html
     <script>
-        const typer = new RealTyper.Typer(".typer");
+        const typer = new RealTyper.Typer(
+            document.querySelector(".typer"),
+            [
+                "First Sample Text",
+                "Second Sample Text",
+                "Third Sample Text"
+            ]);
         typer.type();
     </script>
 ```
 
 if you app is not finding `RealTyper` call it with `window` prefix.
 ```js
-    const typer = new window.RealTyper.Typer(".typer");
+    const typer = new window.RealTyper.Typer(document.querySelector(".typer"), "test");
 ```
 
 ## Customization
@@ -53,31 +53,39 @@ if you app is not finding `RealTyper` call it with `window` prefix.
 the following properties can be changed.
 ```html
     <script>
-        const typer = new RealTyper.Typer(".typer");
-        typer.strings = ['sample one','sample two','sample three'];
-        typer.cursorCharacter = "|";
-        typer.typeSpeed = 100;
-        typer.deleteSpeed = 50;
-        typer.holdDelay = 1500;
-        typer.pauseDelay = 1000;
-        typer.startDelay = 0;
-        typer.delete = true;
-        typer.deleteLastString = true;
-        typer.loop = true;
-        typer.loopHold = 1500;
-        typer.loopStartIndex = 0
-        typer.callback = null;
-        typer.callbackArgs = null;
-        typer.developerMode = true;
-        typer1.type();
+        const typer = new RealTyper.Typer(
+            document.querySelector(".typer"),
+            [
+                "First Sample Text",
+                "Second Sample Text",
+                "Third Sample Text"
+            ],
+            {
+                cursorCharacter : "|",
+                typeSpeed : 100,
+                deleteSpeed : 50,
+                holdDelay : 1500,
+                pauseDelay : 1000,
+                startDelay : 0,
+                delete : true,
+                deleteLastString : true,
+                loop : true,
+                loopHold : 1500,
+                loopStartIndex : ,
+                callback : null,
+                callbackArgs : null,
+                developerMode : true,
+            }
+        );
+        typer.type();
     </script>
 ```
 
 
 ## Interface:
-    strings (default: Random text)   : Strings to be type, this value can be pass as an argument or be children of the selected component
+    strings (default: undefined)   : Strings to be type, this value can be pass as an argument or be children of the selected component
 
-    cssSelector (default: null)      : the html component that the strings are written to(given from). Must be a css selector
+    htmlElement (default: undefined) : the html component that the strings are written into
        
     cursorCharacter (default: "|")   : value for the cursor symbol. put "" for no cursor
     
