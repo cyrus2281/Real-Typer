@@ -120,7 +120,7 @@ Copyright 202 Cyrus Mobini https://github.com/cyrus2281
   <header>
     <h1>Real-Typer</h1>
     <div class="intro">
-      <p>A JavaScript module that gives the effect of typing for texts.</p>
+      <p></p>
     </div>
   </header>
   <section class="setup">
@@ -134,147 +134,172 @@ Copyright 202 Cyrus Mobini https://github.com/cyrus2281
   <div class="grid">
     <div class="col">
       <h2 class="col-title">Simple Type</h2>
-      <div class="typer typer1">
-        <span>Lorem ipsum dolor sit amet.</span>
-        <span>consectetur adipisicing elit.</span>
-        <span>Doloremque, architecto Officia quos.</span>
-      </div>
+      <div class="typer typer1"></div>
       <pre><code class="language-js">
-    const typer1 = new RealTyper.Typer(".typer1");
+    const typer1 = new RealTyper.Typer(
+      document.querySelector(".typer1"),
+      [
+        "1 Lorem ipsum sit amet",
+        "2 consectetur elit.",
+        "3 Doloremque, Officia quos."
+      ]);
     typer1.type();
         </code></pre>
     </div>
     <div class="col">
       <h2 class="col-title">Fast Type</h2>
-      <div class="typer typer2">
-        <span>Lorem ipsum dolor sit amet.</span>
-        <span>consectetur adipisicing elit.</span>
-        <span>Doloremque, architecto Officia quos.</span>
-      </div>
+      <div class="typer typer2"></div>
       <pre><code class="language-js">
-    const typer2 = new RealTyper.Typer(".typer2");
-    typer2.typeSpeed = 30;
-    typer2.deleteSpeed = 20;
+    const typer2 = new RealTyper.Typer(
+      document.querySelector(".typer1"),
+      [
+        "1 Lorem ipsum sit amet",
+        "2 consectetur elit.",
+        "3 Doloremque, Officia quos."
+      ], {
+        typeSpeed: 30,
+        deleteSpeed: 20
+      });
     typer2.type();
         </code></pre>
     </div>
     <div class="col">
       <h2 class="col-title">Long Hold</h2>
-      <div class="typer typer3">
-        <span>Lorem ipsum dolor sit amet.</span>
-        <span>consectetur adipisicing elit.</span>
-        <span>Doloremque, architecto Officia quos.</span>
-      </div>
+      <div class="typer typer3"></div>
       <pre><code class="language-js">
-    const typer3 = new RealTyper.Typer(".typer3");
-    typer3.holdDelay = 2500;
-    typer3.pauseDelay = 2000;
-    typer3.loopHold = 2500;
-    typer3.startDelay = 1500;
+    const typer3 = new RealTyper.Typer(
+      document.querySelector(".typer1"),
+      [
+        "1 Lorem ipsum sit amet",
+        "2 consectetur elit.",
+        "3 Doloremque, Officia quos."
+      ], {
+        holdDelay: 2500,
+        pauseDelay: 2000,
+        loopHold: 2500,
+        startDelay: 1500
+      });
     typer3.type();
         </code></pre>
     </div>
     <div class="col">
-      <h2 class="col-title">Given String</h2>
+      <h2 class="col-title">Single String</h2>
       <div class="typer typer4"></div>
       <pre><code class="language-js">
-    const strings = ["possus exeturi velit",
-                   "rem nostrum voluates",
-                   "omnis impedit aperes"];
-            
-    const typer4 = new RealTyper.Typer(".typer4",strings);
-    typer4.type();
+        const typer4 = new RealTyper.Typer(
+          document.querySelector(".typer4"),
+          "1 Lorem ipsum sit amet");
+        typer4.type();
         </code></pre>
     </div>
     <div class="col">
       <h2 class="col-title">Custom Cursor</h2>
-      <div class="typer typer5">
-        <span>Lorem ipsum dolor sit amet.</span>
-        <span>consectetur adipisicing elit.</span>
-        <span>Doloremque, architecto Officia quos.</span>
-      </div>
+      <div class="typer typer5"></div>
       <pre><code class="language-js">
-    const typer5 = new RealTyper.Typer(".typer5");
-    typer5.cursorCharacter = "_";
-    typer5.type();
+        const typer5 = new RealTyper.Typer(
+          document.querySelector(".typer5"),
+          [
+            "1 Lorem ipsum sit amet",
+            "2 consectetur elit.",
+            "3 Doloremque, Officia quos."
+          ], {
+            cursorCharacter: "_"
+          });
+        typer5.type();
       </code></pre>
     </div>
     <div class="col">
       <h2 class="col-title">No Delete</h2>
-      <div class="typer typer6">
-        <span>Lorem ipsum dolor sit amet.</span>
-        <span>consectetur adipisicing elit.</span>
-        <span>Doloremque, architecto Officia quos.</span>
-      </div>
+      <div class="typer typer6"></div>
       <pre><code class="language-js">
-    const typer6 = new RealTyper.Typer(".typer6");
-    typer6.delete = false;
-    typer6.type();
+        const typer6 = new RealTyper.Typer(
+          document.querySelector(".typer6"),
+          [
+            "1 Lorem ipsum sit amet",
+            "2 consectetur elit.",
+            "3 Doloremque, Officia quos."
+          ], {
+            delete: false
+          });
+        typer6.type();
       </code></pre>
     </div>
     <div class="col">
       <h2 class="col-title">No Loop</h2>
-      <div class="typer typer7">
-        <span>1 Lorem ipsum sit amet.</span>
-        <span>2 consectetur elit.</span>
-        <span>3 Doloremque, Officia quos.</span>
-      </div>
+      <div class="typer typer7"></div>
       <pre><code class="language-js">
-    const typer7 = new RealTyper.Typer(".typer7");
-    typer7.loop = false;
-    typer7.type();
+        const typer7 = new RealTyper.Typer(
+          document.querySelector(".typer7"),
+          [
+            "1 Lorem ipsum sit amet",
+            "2 consectetur elit.",
+            "3 Doloremque, Officia quos."
+          ], {
+            loop: false
+          });
+        typer7.type();
     </code></pre>
     </div>
     <div class="col">
       <h2 class="col-title">Loop Start Index</h2>
-      <div class="typer typer8">
-        <span>1 Lorem ipsum sit amet.</span>
-        <span>2 consectetur elit.</span>
-        <span>3 Doloremque, Officia quos.</span>
-      </div>
+      <div class="typer typer8"></div>
       <pre><code class="language-js">
-    const typer8 = new RealTyper.Typer(".typer8");
-    typer8.loopStartIndex = 1;
-    typer8.type();
+        const typer8 = new RealTyper.Typer(
+          document.querySelector(".typer8"),
+          [
+            "1 Lorem ipsum sit amet",
+            "2 consectetur elit.",
+            "3 Doloremque, Officia quos."
+          ], {
+            loopStartIndex: 1
+          });
+        typer8.type();
       </code></pre>
     </div>
     <div class="col">
       <h2 class="col-title">No Delete last string & no loop</h2>
-      <div class="typer typer9">
-        <span>Lorem ipsum sit amet.</span>
-        <span>consectetur elit.</span>
-        <span>Doloremque, Officia quos.</span>
-      </div>
+      <div class="typer typer9"></div>
       <pre><code class="language-js">
-    const typer9 = new RealTyper.Typer(".typer9");
-    typer9.deleteLastString = false;
-    typer9.loop = false;
-    typer9.type();
+        const typer9 = new RealTyper.Typer(
+          document.querySelector(".typer9"),
+          [
+            "1 Lorem ipsum sit amet",
+            "2 consectetur elit.",
+            "3 Doloremque, Officia quos."
+          ], {
+            deleteLastString: false,
+            loop: false
+          });
+        typer9.type();
       </code></pre>
     </div>
     <div class="col">
       <h2 class="col-title">Callback Function</h2>
-      <div class="typer typer10">
-        <span>Lorem ipsum sit amet.</span>
-      </div>
+      <div class="typer typer10"></div>
       <pre><code class="language-js">
-    const typer10 = new RealTyper.Typer(".typer10");
-    typer10.callback = () => {
-      console.log("Testing callback function");}
-    typer10.type();
+        const typer10 = new RealTyper.Typer(
+          document.querySelector(".typer10"),
+          [
+            "Lorem ipsum sit amet",
+          ], {
+            callback: (x) => console.log("Testing callback function"),
+          });
+        typer10.type();
       </code></pre>
     </div>
     <div class="col">
       <h2 class="col-title">Callback with Arguments</h2>
-      <div class="typer typer11">
-        <span>Lorem ipsum sit amet.</span>
-      </div>
+      <div class="typer typer11"></div>
       <pre><code class="language-js">
-    const typer11 = new RealTyper.Typer(".typer11");
-    typer11.callback = (args) => {
-      console.log(args);}
-    typer11.callbackArgs = ["string", true, 10];
-    typer11.type();
+        const typer11 = new RealTyper.Typer(
+          document.querySelector(".typer11"),
+          [
+            "Lorem ipsum sit amet",
+          ], {
+            callback: (args) => console.log(args),
+            callbackArgs: ["string", true, 10]
+          });
+        typer11.type();
       </code></pre>
     </div>
   </div>
@@ -283,64 +308,129 @@ Copyright 202 Cyrus Mobini https://github.com/cyrus2281
     <a href="https://github.com/cyrus2281/">Cyrus Mobini</a>
   </footer>
   <script src="https://cdn.statically.io/gh/cyrus2281/Real-Typer/main/src/JavaScript/dist/real-typer.min.js"></script>
+  <!-- <script src="../../src/JavaScript/dist/real-typer.min.js"></script> -->
   <script>
-    const typer = new RealTyper.Typer(".intro");
-    typer.typeSpeed = 50;
-    typer.deleteLastString = false;
-    typer.loop = false;
+    const typer = new RealTyper.Typer(document.querySelector(".intro"),
+      "A JavaScript module that gives the effect of typing for texts.", {
+        typeSpeed: 50,
+        deleteLastString: false,
+        loop: false
+      });
     typer.type();
 
-    const typer1 = new RealTyper.Typer(".typer1");
+    const typer1 = new RealTyper.Typer(
+      document.querySelector(".typer1"),
+      [
+        "1 Lorem ipsum sit amet",
+        "2 consectetur elit.",
+        "3 Doloremque, Officia quos."
+      ]);
     typer1.type();
 
-    const typer2 = new RealTyper.Typer(".typer2");
-    typer2.typeSpeed = 30;
-    typer2.deleteSpeed = 20;
+    const typer2 = new RealTyper.Typer(
+      document.querySelector(".typer2"),
+      [
+        "1 Lorem ipsum sit amet",
+        "2 consectetur elit.",
+        "3 Doloremque, Officia quos."
+      ], {
+        typeSpeed: 30,
+        deleteSpeed: 20
+      });
     typer2.type();
 
-    const typer3 = new RealTyper.Typer(".typer3");
-    typer3.holdDelay = 2500;
-    typer3.pauseDelay = 2000;
-    typer3.loopHold = 2500;
-    typer3.startDelay = 1500;
+    const typer3 = new RealTyper.Typer(
+      document.querySelector(".typer3"),
+      [
+        "1 Lorem ipsum sit amet",
+        "2 consectetur elit.",
+        "3 Doloremque, Officia quos."
+      ], {
+        holdDelay: 2500,
+        pauseDelay: 2000,
+        loopHold: 2500,
+        startDelay: 1500
+      });
     typer3.type();
 
-    const strings = [
-      "possus exeturi velit",
-      "rem nostrum voluates",
-      "omnis impedit aperes",
-    ];
-    const typer4 = new RealTyper.Typer(".typer4", strings);
+    const typer4 = new RealTyper.Typer(
+      document.querySelector(".typer4"),
+      "1 Lorem ipsum sit amet");
     typer4.type();
 
-    const typer5 = new RealTyper.Typer(".typer5");
-    typer5.cursorCharacter = "_";
+    const typer5 = new RealTyper.Typer(
+      document.querySelector(".typer5"),
+      [
+        "1 Lorem ipsum sit amet",
+        "2 consectetur elit.",
+        "3 Doloremque, Officia quos."
+      ], {
+        cursorCharacter: "_"
+      });
     typer5.type();
 
-    const typer6 = new RealTyper.Typer(".typer6");
-    typer6.delete = false;
+    const typer6 = new RealTyper.Typer(
+      document.querySelector(".typer6"),
+      [
+        "1 Lorem ipsum sit amet",
+        "2 consectetur elit.",
+        "3 Doloremque, Officia quos."
+      ], {
+        delete: false
+      });
     typer6.type();
 
-    const typer7 = new RealTyper.Typer(".typer7");
-    typer7.loop = false;
+    const typer7 = new RealTyper.Typer(
+      document.querySelector(".typer7"),
+      [
+        "1 Lorem ipsum sit amet",
+        "2 consectetur elit.",
+        "3 Doloremque, Officia quos."
+      ], {
+        loop: false
+      });
     typer7.type();
 
-    const typer8 = new RealTyper.Typer(".typer8");
-    typer8.loopStartIndex = 1;
+    const typer8 = new RealTyper.Typer(
+      document.querySelector(".typer8"),
+      [
+        "1 Lorem ipsum sit amet",
+        "2 consectetur elit.",
+        "3 Doloremque, Officia quos."
+      ], {
+        loopStartIndex: 1
+      });
     typer8.type();
 
-    const typer9 = new RealTyper.Typer(".typer9");
-    typer9.deleteLastString = false;
-    typer9.loop = false;
+    const typer9 = new RealTyper.Typer(
+      document.querySelector(".typer9"),
+      [
+        "1 Lorem ipsum sit amet",
+        "2 consectetur elit.",
+        "3 Doloremque, Officia quos."
+      ], {
+        deleteLastString: false,
+        loop: false
+      });
     typer9.type();
 
-    const typer10 = new RealTyper.Typer(".typer10");
-    typer10.callback = () => console.log("Testing callback function");
+    const typer10 = new RealTyper.Typer(
+      document.querySelector(".typer10"),
+      [
+        "Lorem ipsum sit amet",
+      ], {
+        callback: (x) => console.log("Testing callback function"),
+      });
     typer10.type();
 
-    const typer11 = new RealTyper.Typer(".typer11");
-    typer11.callback = (args) => console.log(args);
-    typer11.callbackArgs = ["string", true, 10];
+    const typer11 = new RealTyper.Typer(
+      document.querySelector(".typer11"),
+      [
+        "Lorem ipsum sit amet",
+      ], {
+        callback: (args) => console.log(args),
+        callbackArgs: ["string", true, 10]
+      });
     typer11.type();
   </script>
 </body>
