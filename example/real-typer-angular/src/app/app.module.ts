@@ -5,11 +5,12 @@ import { RealTyperModule } from '@real-typer/angular';
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [AppComponent],
   imports: [
-    RealTyperModule
+    RealTyperModule,
+    BrowserModule
   ],
   providers: [],
-  bootstrap: []
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
