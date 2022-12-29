@@ -13,7 +13,7 @@
  *
  */
 
-import React from "react";
+import React, {useState, useEffect } from "react";
 import { realType, RealTypeOptions, realTyperDefaultProps, StringTypeOptions 
 } from "../utils/RealTyperUtils";
 
@@ -21,24 +21,16 @@ interface RealTyperProps extends StringTypeOptions, RealTypeOptions {
   classes?: string;
 }
 
-export default class RealTyper extends React.Component<RealTyperProps>{
-  static defaultProps: RealTyperProps = realTyperDefaultProps
+export const RealTyper = (props: RealTyperProps) => { 
+  const [stringOutput, setStringOutput] = useState("");
 
-  state = {
-    stringOutput: "",
-  };
+  useEffect(() => {
+    realType(props, setStringOutput);
+  }, []);
 
-  componentDidMount() {
-    realType(this.props, this.setOutput)
-  }
-
-  setOutput = (string: string) => {
-    this.setState({
-      stringOutput: string,
-    });
-  };
-
-  render() {
-    return <div className={this.props.classes}>{this.state.stringOutput}</div>;
-  }
+  return <div className={props.classes}>{stringOutput}</div>;
 }
+
+RealTyper.defaultProps = realTyperDefaultProps;
+
+export default RealTyper;
