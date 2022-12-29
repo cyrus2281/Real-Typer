@@ -1,20 +1,44 @@
 {
   "name": "@real-typer/react",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "author": "Cyrus Mobini (cyrus2281)",
   "description": "A React library that gives the effect of typing texts",
   "private": false,
   "scripts": {
-    "build": "webpack --mode production --progress",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --extensions \".js,.ts,.tsx\" --out-dir dist/lib",
+    "build:es": "babel src --extensions \".js,.ts,.tsx\" --out-dir dist/es",
+    "build:umd": "cross-env NODE_ENV=development rollup -c -o dist/umd/real-typer.js",
+    "build:umd:min": "cross-env NODE_ENV=production rollup -c -o dist/umd/real-typer.min.js",
+    "build:types": "tsc",
+    "build": "npm run build:types && npm run build:commonjs && npm run build:es && npm run build:umd && npm run build:umd:min",
     "upload": "npm run build && npm version patch && npm publish --access public"
   },
-  "main": "dist/real-typer-react.js",
-  "types": "dist/types/index.d.ts",
-  "sideEffects": false,
+  "main": "dist/lib/index.js",
+  "types": "dist/es/index.d.ts",
+  "unpkg": "dist/umd/real-typer.min.js",
+  "module": "dist/es/index.js",
   "files": [
     "dist"
   ],
   "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/plugin-proposal-decorators": "^7.12.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
+    "@babel/plugin-transform-react-display-name": "^7.12.1",
+    "@babel/plugin-transform-react-jsx": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-typescript": "^7.14.5",
+    "@microsoft/api-extractor": "^7.18.1",
+    "@reduxjs/toolkit": "^1.6.1",
+    "@rollup/plugin-babel": "^5.2.1",
+    "@rollup/plugin-commonjs": "^15.1.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@rollup/plugin-replace": "^2.3.3",
+    "rollup": "^2.32.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "cross-env": "^7.0.2",
     "@types/react": "^18.0.4",
     "ts-loader": "^9.2.8",
     "ts-node": "^10.0.0",
@@ -23,7 +47,7 @@
     "webpack-cli": "^4.9.2"
   },
   "dependencies": {
-    "react": "^18.2.0"
+    "@babel/runtime": "^7.12.1"
   },
   "peerDependencies": {
     "react": "^18.2.0",
