@@ -10,7 +10,7 @@
  *   Licensed under the MIT license.
  *   http://www.opensource.org/licenses/mit-license.php
  *
- *   Copyright 2022 Cyrus Mobini (https://github.com/cyrus2281)
+ *   Copyright 2023 Cyrus Mobini (https://github.com/cyrus2281)
  *
  *
  */

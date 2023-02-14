@@ -1,6 +1,6 @@
 {
   "name": "real-typer",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "author": "Cyrus Mobini (cyrus2281)",
   "description": "A JavaScript library that gives the effect of typing texts",
   "main": "dist/real-typer.min.js",

@@ -33,20 +33,20 @@ export class Typer {
   constructor(htmlElement, strings = [], options = {}) {
     this.htmlElement = htmlElement;
     this.strings = strings;
-    this.cursorCharacter = options.cursorCharacter || this.cursorCharacter;
-    this.typeSpeed = options.typeSpeed || this.typeSpeed;
-    this.deleteSpeed = options.deleteSpeed || this.deleteSpeed;
-    this.holdDelay = options.holdDelay || this.holdDelay;
-    this.pauseDelay = options.pauseDelay || this.pauseDelay;
-    this.startDelay = options.startDelay || this.startDelay;
-    this.delete = options.delete || this.delete;
-    this.deleteLastString = options.deleteLastString || this.deleteLastString;
-    this.loop = options.loop || this.loop;
-    this.loopHold = options.loopHold || this.loopHold;
-    this.loopStartIndex = options.loopStartIndex || this.loopStartIndex;
-    this.callback = options.callback || this.callback;
-    this.callbackArgs = options.callbackArgs || this.callbackArgs;
-    this.developerMode = options.developerMode || this.developerMode;
+    this.cursorCharacter = options.cursorCharacter ?? this.cursorCharacter;
+    this.typeSpeed = options.typeSpeed ?? this.typeSpeed;
+    this.deleteSpeed = options.deleteSpeed ?? this.deleteSpeed;
+    this.holdDelay = options.holdDelay ?? this.holdDelay;
+    this.pauseDelay = options.pauseDelay ?? this.pauseDelay;
+    this.startDelay = options.startDelay ?? this.startDelay;
+    this.delete = options.delete ?? this.delete;
+    this.deleteLastString = options.deleteLastString ?? this.deleteLastString;
+    this.loop = options.loop ?? this.loop;
+    this.loopHold = options.loopHold ?? this.loopHold;
+    this.loopStartIndex = options.loopStartIndex ?? this.loopStartIndex;
+    this.callback = options.callback ?? this.callback;
+    this.callbackArgs = options.callbackArgs ?? this.callbackArgs;
+    this.developerMode = options.developerMode ?? this.developerMode;
   }
 
   type = () => {
