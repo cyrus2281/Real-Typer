@@ -1,6 +1,6 @@
 {
   "name": "@real-typer/react",
-  "version": "2.0.5",
+  "version": "2.0.7",
   "author": "Cyrus Mobini (cyrus2281)",
   "description": "A React library that gives the effect of typing texts",
   "private": false,
@@ -11,7 +11,7 @@
     "build:umd:min": "cross-env NODE_ENV=production rollup -c -o dist/umd/real-typer.min.js",
     "build:types": "tsc",
     "build": "npm run build:types && npm run build:commonjs && npm run build:es && npm run build:umd && npm run build:umd:min",
-    "upload": "npm run build && npm version patch && npm publish --access public"
+    "upload": "npm version patch && npm run build && npm publish --access public"
   },
   "main": "dist/lib/index.js",
   "types": "dist/es/index.d.ts",

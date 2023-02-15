@@ -28,6 +28,7 @@ the following properties can be customized.
 <RealTyper
   strings={["Hello", "World", "From", "Real-Typer"]}
   cursorCharacter="|"
+  cursorBlink={true}
   typeSpeed={100}
   deleteSpeed={50}
   holdDelay={1500}
@@ -50,6 +51,8 @@ the following properties can be customized.
     strings : string | string[] : (default: Undefined) : Strings to be type, this value can be passed both as an string or an array of strings
 
     cursorCharacter : string : (default: "|")          : value for the cursor symbol. put "" for no cursor
+
+    cursorBlink (default: true)                        : whether to blink the cursor or not
 
     typeSpeed : number : (default: 100)                : the speed at which the characters are written
 
