@@ -62,6 +62,7 @@ the following properties can be changed.
             ],
             {
                 cursorCharacter : "|",
+                cursorBlink: true,
                 typeSpeed : 100,
                 deleteSpeed : 50,
                 holdDelay : 1500,
@@ -88,6 +89,8 @@ the following properties can be changed.
     htmlElement (default: undefined) : the html component that the strings are written into
        
     cursorCharacter (default: "|")   : value for the cursor symbol. put "" for no cursor
+
+    cursorBlink (default: true)      : whether to blink the cursor or not
     
     typeSpeed (default: 100)         : the speed at which the characters are written
     

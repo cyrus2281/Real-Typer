@@ -10,12 +10,18 @@
  * @param {*} cssSelector the html component that the strings are written to(given from). Must be a css selector
  * @param {*} strings     Strings to be type, if not given the children of target would be selected
  */
-import { realType, realTyperDefaultProps } from "./utils/RealTyperUtils.js";
+import {
+  cursorBlinkingAnimation,
+  cursorBlinkingStyle,
+  realType,
+  realTyperDefaultProps,
+} from "./utils/RealTyperUtils.js";
 
 export class Typer {
   strings = undefined;
   htmlElement = undefined;
   cursorCharacter = "|";
+  cursorBlink = true;
   typeSpeed = 100;
   deleteSpeed = 50;
   holdDelay = 1500;
@@ -34,6 +40,7 @@ export class Typer {
     this.htmlElement = htmlElement;
     this.strings = strings;
     this.cursorCharacter = options.cursorCharacter ?? this.cursorCharacter;
+    this.cursorBlink = options.cursorBlink ?? this.cursorBlink;
     this.typeSpeed = options.typeSpeed ?? this.typeSpeed;
     this.deleteSpeed = options.deleteSpeed ?? this.deleteSpeed;
     this.holdDelay = options.holdDelay ?? this.holdDelay;
@@ -58,15 +65,23 @@ export class Typer {
       }
       return;
     }
+    const outputText = document.createElement("span");
+    const cursor = document.createElement("span");
+    cursor.innerHTML = this.cursorCharacter;
+    if (this.cursorBlink) {
+      const style = document.createElement("style");
+      style.innerHTML = cursorBlinkingAnimation;
+      cursor.style = cursorBlinkingStyle;
+      this.htmlElement.append(style)
+    }
+    this.htmlElement.append(outputText, cursor);
     const setOutput = (output) => {
-      this.htmlElement.innerHTML = output;
+      outputText.innerHTML = output;
     };
 
     realType(
       {
         strings: this.strings ?? realTyperDefaultProps.strings,
-        cursorCharacter:
-          this.cursorCharacter ?? realTyperDefaultProps.cursorCharacter,
         typeSpeed: this.typeSpeed ?? realTyperDefaultProps.typeSpeed,
         deleteSpeed: this.deleteSpeed ?? realTyperDefaultProps.deleteSpeed,
         holdDelay: this.holdDelay ?? realTyperDefaultProps.holdDelay,
