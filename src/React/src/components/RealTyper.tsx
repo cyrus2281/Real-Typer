@@ -13,23 +13,41 @@
  *
  */
 
-import React, {useState, useEffect } from "react";
-import { realType, RealTypeOptions, realTyperDefaultProps, StringTypeOptions 
+import React, { useState, useEffect } from "react";
+import {
+  CurserOptions,
+  cursorBlinkingAnimation,
+  cursorBlinkingStyle,
+  realType,
+  RealTypeOptions,
+  realTyperDefaultProps,
+  StringTypeOptions,
 } from "../utils/RealTyperUtils";
 
-interface RealTyperProps extends StringTypeOptions, RealTypeOptions {
+interface RealTyperProps
+  extends StringTypeOptions,
+    RealTypeOptions,
+    CurserOptions {
   classes?: string;
 }
 
-export const RealTyper = (props: RealTyperProps) => { 
+export const RealTyper = (props: RealTyperProps) => {
   const [stringOutput, setStringOutput] = useState("");
 
   useEffect(() => {
     realType(props, setStringOutput);
   }, []);
 
-  return <div className={props.classes}>{stringOutput}</div>;
-}
+  return (
+    <div className={props.classes}>
+      {props.cursorBlink && <style>{cursorBlinkingAnimation}</style>}
+      {stringOutput}
+      <span style={{ animation: props.cursorBlink ? cursorBlinkingStyle : "" }}>
+        {props.cursorCharacter}
+      </span>
+    </div>
+  );
+};
 
 RealTyper.defaultProps = realTyperDefaultProps;
 

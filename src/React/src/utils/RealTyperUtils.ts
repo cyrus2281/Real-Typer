@@ -14,8 +14,6 @@
  */
 
 export interface StringTypeOptions {
-  /** The character that will be used as a cursor, "" for no cursor */
-  cursorCharacter: string;
   /** The speed of typing in milliseconds */
   typeSpeed: number;
   /** The speed of deleting in milliseconds */
@@ -47,6 +45,13 @@ export interface RealTypeOptions {
   callbackArgs: unknown;
   /** If true, there would be log errors if there is an issue with the prop validation*/
   developerMode: boolean;
+}
+
+export interface CurserOptions {
+  /** The character that will be used as a cursor, "" for no cursor */
+  cursorCharacter: string;
+  /** whether to blink the cursor or not */
+  cursorBlink: boolean;
 }
 
 const sleep = (duration: number): Promise<void> =>
@@ -93,12 +98,12 @@ const typeString = async (
   setOutput: (output: string) => void,
   typeOptions: StringTypeOptions
 ) => {
-  const { typeSpeed, deleteSpeed, holdDelay, cursorCharacter } = typeOptions;
+  const { typeSpeed, deleteSpeed, holdDelay } = typeOptions;
 
   for (let i = 0; i < string.length; i++) {
     location[1] = i;
     await sleep(typeSpeed);
-    setOutput(string.substring(0, i + 1) + cursorCharacter);
+    setOutput(string.substring(0, i + 1));
   }
 
   if (deleteString) {
@@ -106,7 +111,7 @@ const typeString = async (
     for (let i = string.length; i >= 0; i--) {
       location[1] = i;
       await sleep(deleteSpeed);
-      setOutput(string.substring(0, i) + cursorCharacter);
+      setOutput(string.substring(0, i));
     }
   }
 };
@@ -155,7 +160,6 @@ export const realType = async (
         typeSpeed: typeOptions.typeSpeed,
         deleteSpeed: typeOptions.deleteSpeed,
         holdDelay: typeOptions.holdDelay,
-        cursorCharacter: typeOptions.cursorCharacter,
       });
       pauseDelay && (await sleep(pauseDelay));
     }
@@ -165,9 +169,15 @@ export const realType = async (
   } while (loop);
 };
 
-export const realTyperDefaultProps: RealTypeOptions & StringTypeOptions = {
+export const cursorBlinkingAnimation = `@keyframes blink { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; } }`
+export const cursorBlinkingStyle = `blink 0.75s infinite`
+
+export const realTyperDefaultProps: RealTypeOptions &
+  StringTypeOptions &
+  CurserOptions = {
   strings: "",
   cursorCharacter: "|",
+  cursorBlink: true,
   typeSpeed: 100,
   deleteSpeed: 50,
   holdDelay: 1500,

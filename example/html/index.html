@@ -236,6 +236,7 @@ Copyright 202 Cyrus Mobini https://github.com/cyrus2281
             "3 Doloremque, Officia quos."
           ], {
             loop: false
+            cursorCharacter: ''
           });
         typer7.type();
     </code></pre>
@@ -268,7 +269,8 @@ Copyright 202 Cyrus Mobini https://github.com/cyrus2281
             "3 Doloremque, Officia quos."
           ], {
             deleteLastString: false,
-            loop: false
+            loop: false,
+            cursorBlink: false
           });
         typer9.type();
       </code></pre>
@@ -308,8 +310,12 @@ Copyright 202 Cyrus Mobini https://github.com/cyrus2281
     <a href="https://github.com/cyrus2281/">Cyrus Mobini</a>
   </footer>
   <script src="https://cdn.statically.io/gh/cyrus2281/Real-Typer/main/src/JavaScript/dist/real-typer.min.js"></script>
-  <!-- <script src="../../src/JavaScript/dist/real-typer.min.js"></script> -->
-  <script>
+  <!-- <script type="module">
+    // Dev OnLy
+    import Typer from '../../src/JavaScript/src/RealTyper.js'
+    window.RealTyper = { Typer }
+  </script> -->
+  <script type="module">
     const typer = new RealTyper.Typer(document.querySelector(".intro"),
       "A JavaScript module that gives the effect of typing for texts.", {
         typeSpeed: 50,
@@ -387,7 +393,8 @@ Copyright 202 Cyrus Mobini https://github.com/cyrus2281
         "2 consectetur elit.",
         "3 Doloremque, Officia quos."
       ], {
-        loop: false
+        loop: false,
+        cursorCharacter: ''
       });
     typer7.type();
 
@@ -410,7 +417,8 @@ Copyright 202 Cyrus Mobini https://github.com/cyrus2281
         "3 Doloremque, Officia quos."
       ], {
         deleteLastString: false,
-        loop: false
+        loop: false,
+        cursorBlink: false
       });
     typer9.type();
 

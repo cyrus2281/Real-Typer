@@ -54,12 +54,12 @@ const typeString = async (
   setOutput,
   typeOptions,
 ) => {
-  const { typeSpeed, deleteSpeed, holdDelay, cursorCharacter } = typeOptions;
+  const { typeSpeed, deleteSpeed, holdDelay } = typeOptions;
 
   for (let i = 0; i < string.length; i++) {
     location[1] = i;
     await sleep(typeSpeed);
-    setOutput(string.substring(0, i + 1) + cursorCharacter);
+    setOutput(string.substring(0, i + 1));
   }
 
   if (deleteString) {
@@ -67,7 +67,7 @@ const typeString = async (
     for (let i = string.length; i >= 0; i--) {
       location[1] = i;
       await sleep(deleteSpeed);
-      setOutput(string.substring(0, i) + cursorCharacter);
+      setOutput(string.substring(0, i));
     }
   }
 };
@@ -116,7 +116,6 @@ export const realType = async (
         typeSpeed: typeOptions.typeSpeed,
         deleteSpeed: typeOptions.deleteSpeed,
         holdDelay: typeOptions.holdDelay,
-        cursorCharacter: typeOptions.cursorCharacter,
       });
       pauseDelay && (await sleep(pauseDelay));
     }
@@ -143,5 +142,8 @@ export const realTyperDefaultProps = {
   callbackArgs: undefined,
   developerMode: false,
 };
+
+export const cursorBlinkingAnimation = `@keyframes blink { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; } }`
+export const cursorBlinkingStyle = `animation: blink 0.75s infinite;`
 
 export default realType;
