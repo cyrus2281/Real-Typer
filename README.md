@@ -1,10 +1,9 @@
 # Real-Typer
 A JavaScript that library gives the effect of typing.
 
-Real-Typer  is a light weight JavaScript library that allows you to simulate the action of real-time typing for texts on a websites. Real-Typer gives you lots of customizations to fully customize the simulation for your need.
+Real-Typer is a light weight JavaScript library that allows you to simulate the effect of real-time typing for texts on a websites. Real-Typer offers lots of options to fully customize the simulation to your need.
 
-Real-Typer now also comes to **Angular** and **React**. You can simply add the typer component to your Angular or React project and enjoy the effect of typing.
-
+Real-Typer also comes to Angular and React. You can simply add the typer component to your **Angular** or **React** project and enjoy the effect of typing.
 
 `Examples` for all supporting platform can be found in the [Examples directory](./examples)
 
