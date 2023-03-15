@@ -72,14 +72,19 @@ export class Typer {
       const style = document.createElement("style");
       style.innerHTML = cursorBlinkingAnimation;
       cursor.style = cursorBlinkingStyle;
-      this.htmlElement.append(style)
+      this.htmlElement.append(style);
     }
     this.htmlElement.append(outputText, cursor);
     const setOutput = (output) => {
       outputText.innerHTML = output;
     };
 
-    realType(
+      /**
+   * Emit a string to be added to the list of strings to be typed
+   * @param {string} input string to be added to the queue
+   * @param {undefined|number|true} index index of the string in the queue, if true, it will be the last string in the queue, if undefined, it will add it a new string to the queue
+   */
+    const emit = realType(
       {
         strings: this.strings ?? realTyperDefaultProps.strings,
         typeSpeed: this.typeSpeed ?? realTyperDefaultProps.typeSpeed,
@@ -101,6 +106,10 @@ export class Typer {
       },
       setOutput
     );
+
+    return {
+      emit,
+    };
   };
 }
 
