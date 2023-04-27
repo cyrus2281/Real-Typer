@@ -1,6 +1,8 @@
 import RealTyper from "@real-typer/react";
+import React from "react";
 
 const App = () => {
-  return <RealTyper strings={["Hello", "World"]} />;
+  const ref = React.useRef({});
+  return <RealTyper ref={ref} strings={["Hello", "World"]}/>;
 };
 export default App;

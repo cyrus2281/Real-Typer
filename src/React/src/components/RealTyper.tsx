@@ -18,6 +18,7 @@ import {
   CurserOptions,
   cursorBlinkingAnimation,
   cursorBlinkingStyle,
+  Emit,
   realType,
   RealTypeOptions,
   realTyperDefaultProps,
@@ -30,12 +31,18 @@ interface RealTyperProps
     CurserOptions {
   classes?: string;
 }
+type EmitRef = {
+  current: { emit: Emit };
+};
 
-export const RealTyper = (props: RealTyperProps) => {
+export const RealTyper = React.forwardRef((props: RealTyperProps, ref) => {
   const [stringOutput, setStringOutput] = useState("");
 
   useEffect(() => {
-    realType(props, setStringOutput);
+    const emit = realType(props, setStringOutput);
+    if (ref && (ref as EmitRef).current) {
+      (ref as EmitRef).current.emit = emit;
+    }
   }, []);
 
   return (
@@ -47,7 +54,7 @@ export const RealTyper = (props: RealTyperProps) => {
       </span>
     </div>
   );
-};
+});
 
 RealTyper.defaultProps = realTyperDefaultProps;
 

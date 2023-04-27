@@ -25,25 +25,34 @@ const App = () => {
 the following properties can be customized.
 
 ```jsx
-<RealTyper
-  strings={["Hello", "World", "From", "Real-Typer"]}
-  cursorCharacter="|"
-  cursorBlink={true}
-  typeSpeed={100}
-  deleteSpeed={50}
-  holdDelay={1500}
-  pauseDelay={1000}
-  startDelay={0}
-  delete={true}
-  deleteLastString={true}
-  loop={true}
-  loopHold={1500}
-  loopStartIndex={0}
-  callback={functionName}
-  callbackArgs={{}}
-  developerMode={true}
-  classes="className"
-></RealTyper>
+const App = () => {
+  const ref = React.useRef({});
+
+  useEffect(() => {
+    ref.current.emit("New Message", true);
+  }, []);
+
+  <RealTyper
+    strings={["Hello", "World", "From", "Real-Typer"]}
+    ref={ref}
+    cursorCharacter="|"
+    cursorBlink={true}
+    typeSpeed={100}
+    deleteSpeed={50}
+    holdDelay={1500}
+    pauseDelay={1000}
+    startDelay={0}
+    delete={true}
+    deleteLastString={true}
+    loop={true}
+    loopHold={1500}
+    loopStartIndex={0}
+    callback={functionName}
+    callbackArgs={{}}
+    developerMode={true}
+    classes="className"
+  ></RealTyper>
+};
 ```
 
 ## Interface:
@@ -81,6 +90,15 @@ the following properties can be customized.
     developerMode : boolean : (default: false)         : logs errors in the console for debugging [recommend for development]
 
     classes : string : (default: '')                   : class names that will be added to the component
+
+### Emitters
+You can use `emit` from `ref` to add an string to the list of strings being typed.
+```ts
+    const index: number|true|undefined = true;
+    ref.current.emit("New String", index);
+```
+* `index` is optional and if not passed the string will be added to the end of the list.
+* `index` can be a number or true. if it is a number the string will be added to the list at that index. if it is true the string will be added to the last string.
 
 <br>
 <br>

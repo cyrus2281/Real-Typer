@@ -87,7 +87,6 @@ const typeLoop = async (props) => {
 
   props.isRunning = true;
   do {
-    console.log(location, queue.length);
     for (let i = location[0]; i < queue.length; i++) {
       location[0] = i;
       const deleteString =
