@@ -56,6 +56,32 @@ export interface CurserOptions {
   cursorBlink: boolean;
 }
 
+export type EmitterInput = {
+  /**
+   * string to be added to the queue
+   */
+  input: string;
+  /**
+   * index of the string in the queue, if true, it will be the last string in the queue, if undefined, it will add it a new string to the queue
+   */
+  index?: undefined | number | true;
+};
+
+/**
+ * Emit a string to be added to the list of strings to be typed
+ * @param {string} input string to be added to the queue
+ * @param {undefined|number|true} index index of the string in the queue, if true, it will be the last string in the queue, if undefined, it will add it a new string to the queue
+ */
+export type Emit = (input: string, index: undefined | number | true) => void;
+
+interface LoopInput {
+  isRunning: boolean;
+  queue: string[];
+  location: [number, number];
+  typeOptions: RealTypeOptions & StringTypeOptions;
+  setOutput: (string: string) => void;
+}
+
 const sleep = (duration: number): Promise<void> =>
   new Promise((resolve) => setTimeout(resolve, duration));
 
@@ -65,13 +91,18 @@ const checkValues = (props: {
   loopStartIndex: number;
   callback: (args: unknown) => void;
 }) => {
-  if (!props.strings) {
+  if (!(typeof props.strings === 'string' || Array.isArray(props.strings))) {
     if (props.developerMode) {
-      console.warn('Pass your text to string input like: [strings]="yourText"');
+      console.warn(
+        'Input string should be either a string or an array of strings'
+      );
     }
     return false;
   } else {
-    if (!(props.loopStartIndex < props.strings?.length)) {
+    if (
+      Array.isArray(props.strings) &&
+      !(props.loopStartIndex < props.strings?.length)
+    ) {
       if (props.developerMode) {
         console.error(
           'loop start value can not be bigger than length of the strings(' +
@@ -102,7 +133,7 @@ const typeString = async (
 ) => {
   const { typeSpeed, deleteSpeed, holdDelay } = typeOptions;
 
-  for (let i = 0; i < string.length; i++) {
+  for (let i = location[1]; i < string.length; i++) {
     location[1] = i;
     await sleep(typeSpeed);
     setOutput(string.substring(0, i + 1));
@@ -118,13 +149,9 @@ const typeString = async (
   }
 };
 
-export const realType = async (
-  typeOptions: RealTypeOptions & StringTypeOptions,
-  setOutput: (string: string) => void
-) => {
+const typeLoop = async (props: LoopInput) => {
+  const { queue, location, typeOptions, setOutput } = props;
   const {
-    startDelay,
-    strings,
     loop,
     loopStartIndex,
     loopHold,
@@ -133,8 +160,46 @@ export const realType = async (
     pauseDelay,
     callback,
     callbackArgs,
-    developerMode,
   } = typeOptions;
+
+  props.isRunning = true;
+  do {
+    for (let i = location[0]; i < queue.length; i++) {
+      location[0] = i;
+      const deleteString =
+        deleteProp && (deleteLastString || i !== queue.length - 1);
+
+      await typeString(queue[i], location, deleteString, setOutput, {
+        typeSpeed: typeOptions.typeSpeed,
+        deleteSpeed: typeOptions.deleteSpeed,
+        holdDelay: typeOptions.holdDelay,
+      });
+
+      if (
+        queue.length - 1 > location[0] &&
+        queue[location[0]].length - 1 === location[1]
+      ) {
+        // if the string is not the last string in the queue and
+        // the last character of the string is typed, clear index
+        location[1] = 0;
+      }
+      pauseDelay && (await sleep(pauseDelay));
+    }
+    callback && callback(callbackArgs);
+    if (loop) {
+      loopHold && (await sleep(loopHold));
+      location[0] = loopStartIndex;
+    }
+  } while (loop);
+  props.isRunning = false;
+};
+
+export const realType = (
+  typeOptions: RealTypeOptions & StringTypeOptions,
+  setOutput: (string: string) => void
+) => {
+  const { startDelay, strings, loopStartIndex, callback, developerMode } =
+    typeOptions;
 
   if (
     !checkValues({
@@ -144,31 +209,44 @@ export const realType = async (
       callback,
     })
   ) {
-    return;
+    throw new Error('Invalid input, set developerMode to true for more info');
   }
 
-  const stringArray = Array.isArray(strings) ? strings : [strings];
-  const location: [number, number] = [0, 0];
+  const initialValues = Array.isArray(strings) ? strings : [strings];
+  const loopInput: LoopInput = {
+    isRunning: true,
+    queue: initialValues,
+    location: [0, 0],
+    typeOptions,
+    setOutput,
+  };
 
-  startDelay && (await sleep(startDelay));
+  const start = async () => {
+    startDelay && (await sleep(startDelay));
+    typeLoop(loopInput);
+  };
 
-  do {
-    for (let i = location[0]; i < stringArray.length; i++) {
-      location[0] = i;
-      const deleteString =
-        deleteProp && (deleteLastString || i !== stringArray.length - 1);
-
-      await typeString(stringArray[i], location, deleteString, setOutput, {
-        typeSpeed: typeOptions.typeSpeed,
-        deleteSpeed: typeOptions.deleteSpeed,
-        holdDelay: typeOptions.holdDelay,
-      });
-      pauseDelay && (await sleep(pauseDelay));
+  /**
+   * Emit a string to be added to the list of strings to be typed
+   * @param {string} input string to be added to the queue
+   * @param {undefined|number|true} index index of the string in the queue, if true, it will be the last string in the queue, if undefined, it will add it a new string to the queue
+   */
+  const streamInput: Emit = (input, index) => {
+    if (index === true) {
+      index = loopInput.queue.length - 1;
     }
-    callback && callback(callbackArgs);
-    loop && loopHold && (await sleep(loopHold));
-    location[0] = loopStartIndex;
-  } while (loop);
+    if (typeof index === 'number' && index < loopInput.queue.length) {
+      loopInput.queue[index] += input;
+    } else {
+      loopInput.queue.push(input);
+    }
+    if (!loopInput.isRunning) {
+      typeLoop(loopInput);
+    }
+  };
+
+  start();
+  return streamInput;
 };
 
 export const realTyperDefaultProps: RealTypeOptions &
