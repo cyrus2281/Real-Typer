@@ -1,12 +1,16 @@
 import {
   AfterViewInit,
+  OnDestroy,
   Component,
-  ElementRef,
   EventEmitter,
   Input,
   Output,
 } from '@angular/core';
-import realType, { realTyperDefaultProps } from './utils/RealTyperUtils';
+import realType, {
+  realTyperDefaultProps,
+  Emit,
+  EmitterInput,
+} from './utils/RealTyperUtils';
 
 /**
  *   RealTyper for Angular
@@ -23,7 +27,7 @@ import realType, { realTyperDefaultProps } from './utils/RealTyperUtils';
   templateUrl: './real-typer.component.html',
   styleUrls: ['./real-typer.component.css'],
 })
-export class RealTyperComponent implements AfterViewInit {
+export class RealTyperComponent implements AfterViewInit, OnDestroy {
   @Input() strings!: string | string[];
   @Input() cursorCharacter: string = realTyperDefaultProps.cursorCharacter;
   @Input() cursorBlink: boolean = realTyperDefaultProps.cursorBlink;
@@ -42,12 +46,17 @@ export class RealTyperComponent implements AfterViewInit {
   @Input() callbackArgs!: any;
   @Input() styles!: {};
 
+  @Input() emitter: EventEmitter<EmitterInput> = new EventEmitter();
   @Output() callBackOutput: EventEmitter<any> = new EventEmitter();
 
   public typerOutput: string = '';
+  private _typerEmitter!: Emit;
 
   ngAfterViewInit(): void {
     this.type();
+    this.emitter.subscribe((event) => {
+      this._typerEmitter(event.input, event.index);
+    });
   }
 
   setOutput = (string: string) => {
@@ -61,7 +70,7 @@ export class RealTyperComponent implements AfterViewInit {
   };
 
   type(): void {
-    realType(
+    this._typerEmitter = realType(
       {
         strings: this.strings,
         typeSpeed: this.typeSpeed,
@@ -80,5 +89,9 @@ export class RealTyperComponent implements AfterViewInit {
       },
       this.setOutput
     );
+  }
+
+  ngOnDestroy(): void {
+    if (this.emitter) this.emitter.unsubscribe();
   }
 }

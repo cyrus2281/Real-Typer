@@ -39,7 +39,7 @@ Then call the `type` method to start typing.
                 "Second Sample Text",
                 "Third Sample Text"
             ]);
-        typer.type();
+        const typeInstance = typer.type();
     </script>
 ```
 
@@ -47,6 +47,15 @@ if you app is not finding `RealTyper` call it with `window` prefix.
 ```js
     const typer = new window.RealTyper.Typer(document.querySelector(".typer"), "test");
 ```
+
+### Emitters
+You can use `emit` to add an string to the list of strings being typed.
+```js
+    const index = true;
+    typeInstance.emit("New String", index);
+```
+* `index` is optional and if not passed the string will be added to the end of the list.
+* `index` can be a number or true. if it is a number the string will be added to the list at that index. if it is true the string will be added to the last string.
 
 ## Customization
 
@@ -78,12 +87,14 @@ the following properties can be changed.
                 developerMode : true,
             }
         );
-        typer.type();
+        const typeInstance = typer.type();
     </script>
 ```
 
 
 ## Interface:
+Properties::
+
     strings (default: undefined)   : Strings to be type, this value can be pass as an argument or be children of the selected component
 
     htmlElement (default: undefined) : the html component that the strings are written into
@@ -118,6 +129,9 @@ the following properties can be changed.
 
     developerMode (default: false)   : logs errors in the console for debugging [recommend for development]
 
+type instance:
+
+    emit (input: string, index: undefined|number|true)   : to add an string to the list of strings being typed
 
 <br>
 <br>
